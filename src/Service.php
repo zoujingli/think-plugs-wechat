@@ -24,5 +24,6 @@ class Service extends \think\Service
         $addons = $this->app->config->get('app.addons', []);
         $addons['admin'] = __DIR__ . DIRECTORY_SEPARATOR;
         $this->app->config->set(['addons' => $addons], 'app');
+        include_once __DIR__ . DIRECTORY_SEPARATOR . 'sys.php';
     }
 }

@@ -13,9 +13,6 @@
     "zoujingli/think-library": "6.0.x-dev"
   },
   "autoload": {
-    "files": [
-      "src/sys.php"
-    ],
     "psr-4": {
       "app\\wechat\\": "src"
     }
