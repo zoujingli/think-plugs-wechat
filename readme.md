@@ -1,4 +1,4 @@
-# ThinkPlugsAdmin
+# ThinkPlugsWechat
 
 #### 介绍
 
