@@ -22,7 +22,7 @@ class Service extends \think\Service
     public function boot(): void
     {
         $addons = $this->app->config->get('app.addons', []);
-        $addons['admin'] = __DIR__ . DIRECTORY_SEPARATOR;
+        $addons['wechat'] = __DIR__ . DIRECTORY_SEPARATOR;
         $this->app->config->set(['addons' => $addons], 'app');
         include_once __DIR__ . DIRECTORY_SEPARATOR . 'sys.php';
     }
