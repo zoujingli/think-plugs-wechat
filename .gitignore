@@ -1,0 +1,10 @@
+.env
+.git
+.svn
+.idea
+.fleet
+.vscode
+.DS_Store
+*.log
+/vendor
+/composer.lock
