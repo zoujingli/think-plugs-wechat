@@ -25,9 +25,9 @@ class Service extends \think\Service
      */
     public function boot(): void
     {
-        $attrs = explode('\\', __NAMESPACE__);
+        $attr = explode('\\', __NAMESPACE__);
         $addons = $this->app->config->get('app.addons', []);
-        $addons[array_pop($attrs)] = __DIR__ . DIRECTORY_SEPARATOR . '@' . join('\\', $attrs);
+        $addons[array_pop($attr)] = __DIR__ . DIRECTORY_SEPARATOR . '@' . join('\\', $attr);
         $this->app->config->set(['addons' => $addons], 'app');
     }
 
