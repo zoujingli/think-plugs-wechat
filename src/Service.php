@@ -37,7 +37,7 @@ class Service extends \think\Service
     public function register(): void
     {
         // 注册模块指令
-        $this->app->console->addCommands([Fans::class, Auto::class]);
+        $this->commands([Fans::class, Auto::class]);
 
         // 注册粉丝关注事件
         $this->app->event->listen('WechatFansSubscribe', function ($openid) {
