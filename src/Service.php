@@ -2,6 +2,10 @@
 
 namespace app\wechat;
 
+use app\wechat\command\Auto;
+use app\wechat\command\Fans;
+use app\wechat\service\AutoService;
+
 /**
  * 组件注册服务
  * Class Service
@@ -16,7 +20,7 @@ class Service extends \think\Service
     const VERSION = '0.0.1';
 
     /**
-     * 组件服务启动
+     * 配置组件服务
      * @return void
      */
     public function boot(): void
@@ -24,6 +28,20 @@ class Service extends \think\Service
         $addons = $this->app->config->get('app.addons', []);
         $addons['wechat'] = __DIR__ . DIRECTORY_SEPARATOR;
         $this->app->config->set(['addons' => $addons], 'app');
-        include_once __DIR__ . DIRECTORY_SEPARATOR . 'sys.php';
+    }
+
+    /**
+     * 注册组件服务
+     * @return void
+     */
+    public function register(): void
+    {
+        // 注册模块指令
+        $this->app->console->addCommands([Fans::class, Auto::class]);
+
+        // 注册粉丝关注事件
+        $this->app->event->listen('WechatFansSubscribe', function ($openid) {
+            AutoService::register($openid);
+        });
     }
 }
