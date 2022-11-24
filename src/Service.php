@@ -25,8 +25,9 @@ class Service extends \think\Service
      */
     public function boot(): void
     {
+        $attrs = explode('\\', __NAMESPACE__);
         $addons = $this->app->config->get('app.addons', []);
-        $addons['wechat'] = __DIR__ . DIRECTORY_SEPARATOR;
+        $addons[array_pop($attrs)] = __DIR__ . DIRECTORY_SEPARATOR . '@' . join('\\', $attrs);
         $this->app->config->set(['addons' => $addons], 'app');
     }
 
