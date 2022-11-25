@@ -74,7 +74,7 @@ class MediaService extends Service
     {
         $map = ['md5' => md5($url), 'appid' => WechatService::getAppid()];
         if (($mediaId = WechatMedia::mk()->where($map)->value('media_id'))) return $mediaId;
-        $result = WechatService::WeChatMedia()->addMaterial(self::buildCurlFile($url), $type, $video);
+        $result = WechatService::WeChatMedia()->addMaterial(static::buildCurlFile($url), $type, $video);
         WechatMedia::mUpdate([
             'md5'       => $map['md5'],
             'type'      => $type,
