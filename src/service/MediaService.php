@@ -45,10 +45,12 @@ class MediaService extends Service
         $map1 = ['id' => $id, 'is_deleted' => 0];
         $data = WechatNews::mk()->where($map1)->where($map)->find();
         if (empty($data)) return [];
+
         // 文章内容编号
         $data['articles'] = [];
         $aids = $data['articleids'] = str2arr($data['article_id']);
         if (empty($data['articleids'])) return $data->toArray();
+
         // 文章内容集合
         $query = WechatNewsArticle::mk()->whereIn('id', $aids)->orderField('id', $aids);
         $data['articles'] = $query->withoutField('create_by,create_at')->select()->toArray();
