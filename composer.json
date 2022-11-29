@@ -9,8 +9,6 @@
     }
   ],
   "require": {
-    "zoujingli/think-library": "6.0.x-dev",
-    "zoujingli/think-plugs-admin": "dev-master",
     "zoujingli/wechat-developer": "^1.2"
   },
   "autoload": {
