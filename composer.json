@@ -1,7 +1,7 @@
 {
   "name": "zoujingli/think-plugs-wechat",
-  "description": "基于 ThinkAdmin 的 Wechat 模块",
   "license": "MIT",
+  "description": "基于 ThinkAdmin 的 Wechat 模块",
   "authors": [
     {
       "name": "Anyon",
@@ -11,7 +11,7 @@
   "require": {
     "zoujingli/think-library": "^6.1|v6.0.x-dev",
     "zoujingli/wechat-developer": "^1.2",
-    "zoujingli/think-plugs-admin": "dev-master"
+    "zoujingli/think-plugs-admin": "^1.0|dev-master"
   },
   "autoload": {
     "psr-4": {
