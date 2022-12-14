@@ -18,14 +18,14 @@ namespace app\wechat;
 use app\wechat\command\Auto;
 use app\wechat\command\Fans;
 use app\wechat\service\AutoService;
-use think\admin\service\PluginService;
+use think\admin\Plugin;
 
 /**
  * 组件注册服务
  * Class Service
  * @package app\wechat
  */
-class Service extends PluginService
+class Service extends Plugin
 {
     /**
      * 注册组件服务
