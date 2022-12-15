@@ -14,18 +14,18 @@
 // | github 代码仓库：https://github.com/zoujingli/ThinkAdmin
 // +----------------------------------------------------------------------
 
-namespace app\wechat\command;
+namespace plugin\wechat\command;
 
-use app\wechat\model\WechatFans;
-use app\wechat\model\WechatFansTags;
-use app\wechat\service\FansService;
-use app\wechat\service\WechatService;
+use plugin\wechat\model\WechatFans;
+use plugin\wechat\model\WechatFansTags;
+use plugin\wechat\service\FansService;
+use plugin\wechat\service\WechatService;
 use think\admin\Command;
 
 /**
  * 微信粉丝管理指令
  * Class Fans
- * @package app\wechat\command
+ * @package plugin\wechat\command
  */
 class Fans extends Command
 {

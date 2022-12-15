@@ -14,14 +14,14 @@
 // | github 代码仓库：https://github.com/zoujingli/ThinkAdmin
 // +----------------------------------------------------------------------
 
-namespace app\wechat\model;
+namespace plugin\wechat\model;
 
 use think\admin\Model;
 
 /**
  * 微信回复关键词模型
  * Class WechatKeys
- * @package app\wechat\model
+ * @package plugin\wechat\model
  */
 class WechatKeys extends Model
 {

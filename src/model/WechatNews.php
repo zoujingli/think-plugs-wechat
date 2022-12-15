@@ -14,14 +14,14 @@
 // | github 代码仓库：https://github.com/zoujingli/ThinkAdmin
 // +----------------------------------------------------------------------
 
-namespace app\wechat\model;
+namespace plugin\wechat\model;
 
 use think\admin\Model;
 
 /**
  * 微信图文主模型
  * Class WechatNews
- * @package app\wechat\model
+ * @package plugin\wechat\model
  */
 class WechatNews extends Model
 {

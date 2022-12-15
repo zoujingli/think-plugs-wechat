@@ -14,16 +14,16 @@
 // | github 代码仓库：https://github.com/zoujingli/ThinkAdmin
 // +----------------------------------------------------------------------
 
-namespace app\wechat\controller\api;
+namespace plugin\wechat\controller\api;
 
-use app\wechat\service\WechatService;
+use plugin\wechat\service\WechatService;
 use think\admin\Controller;
 use think\Response;
 
 /**
  * 前端JS获取控制器
  * Class Js
- * @package app\wechat\controller\api
+ * @package plugin\wechat\controller\api
  */
 class Js extends Controller
 {

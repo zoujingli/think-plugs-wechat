@@ -14,17 +14,17 @@
 // | github 代码仓库：https://github.com/zoujingli/ThinkAdmin
 // +----------------------------------------------------------------------
 
-namespace app\wechat\controller\api;
+namespace plugin\wechat\controller\api;
 
-use app\wechat\service\FansService;
-use app\wechat\service\MediaService;
-use app\wechat\service\WechatService;
+use plugin\wechat\service\FansService;
+use plugin\wechat\service\MediaService;
+use plugin\wechat\service\WechatService;
 use think\admin\Controller;
 
 /**
  * 微信消息推送处理
  * Class Push
- * @package app\wechat\controller\api
+ * @package plugin\wechat\controller\api
  */
 class Push extends Controller
 {

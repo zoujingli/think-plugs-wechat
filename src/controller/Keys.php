@@ -14,10 +14,10 @@
 // | github 代码仓库：https://github.com/zoujingli/ThinkAdmin
 // +----------------------------------------------------------------------
 
-namespace app\wechat\controller;
+namespace plugin\wechat\controller;
 
-use app\wechat\model\WechatKeys;
-use app\wechat\service\WechatService;
+use plugin\wechat\model\WechatKeys;
+use plugin\wechat\service\WechatService;
 use think\admin\Controller;
 use think\admin\helper\QueryHelper;
 use think\admin\service\SystemService;
@@ -26,7 +26,7 @@ use think\exception\HttpResponseException;
 /**
  * 回复规则管理
  * Class Keys
- * @package app\wechat\controller
+ * @package plugin\wechat\controller
  */
 class Keys extends Controller
 {

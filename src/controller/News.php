@@ -14,11 +14,11 @@
 // | github 代码仓库：https://github.com/zoujingli/ThinkAdmin
 // +----------------------------------------------------------------------
 
-namespace app\wechat\controller;
+namespace plugin\wechat\controller;
 
-use app\wechat\model\WechatNews;
-use app\wechat\model\WechatNewsArticle;
-use app\wechat\service\MediaService;
+use plugin\wechat\model\WechatNews;
+use plugin\wechat\model\WechatNewsArticle;
+use plugin\wechat\service\MediaService;
 use think\admin\Controller;
 use think\admin\helper\QueryHelper;
 use think\admin\service\AdminService;
@@ -26,7 +26,7 @@ use think\admin\service\AdminService;
 /**
  * 微信图文管理
  * Class News
- * @package app\wechat\controller
+ * @package plugin\wechat\controller
  */
 class News extends Controller
 {

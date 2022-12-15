@@ -14,11 +14,11 @@
 // | github 代码仓库：https://github.com/zoujingli/ThinkAdmin
 // +----------------------------------------------------------------------
 
-namespace app\wechat\command;
+namespace plugin\wechat\command;
 
-use app\wechat\model\WechatAuto;
-use app\wechat\service\MediaService;
-use app\wechat\service\WechatService;
+use plugin\wechat\model\WechatAuto;
+use plugin\wechat\service\MediaService;
+use plugin\wechat\service\WechatService;
 use think\admin\Command;
 use think\console\Input;
 use think\console\input\Argument;
@@ -27,7 +27,7 @@ use think\console\Output;
 /**
  * 向指定用户推送消息
  * Class Auto
- * @package app\wechat\command
+ * @package plugin\wechat\command
  */
 class Auto extends Command
 {

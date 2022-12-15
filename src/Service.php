@@ -13,17 +13,17 @@
 // | gitee 代码仓库：https://gitee.com/zoujingli/think-plugs-wechat
 // +----------------------------------------------------------------------
 
-namespace app\wechat;
+namespace plugin\wechat;
 
-use app\wechat\command\Auto;
-use app\wechat\command\Fans;
-use app\wechat\service\AutoService;
+use plugin\wechat\command\Auto;
+use plugin\wechat\command\Fans;
+use plugin\wechat\service\AutoService;
 use think\admin\Plugin;
 
 /**
  * 组件注册服务
  * Class Service
- * @package app\wechat
+ * @package plugin\wechat
  */
 class Service extends Plugin
 {

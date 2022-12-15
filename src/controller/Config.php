@@ -14,16 +14,16 @@
 // | github 代码仓库：https://github.com/zoujingli/ThinkAdmin
 // +----------------------------------------------------------------------
 
-namespace app\wechat\controller;
+namespace plugin\wechat\controller;
 
-use app\wechat\service\WechatService;
+use plugin\wechat\service\WechatService;
 use think\admin\Controller;
 use think\admin\storage\LocalStorage;
 
 /**
  * 微信授权绑定
  * Class Config
- * @package app\wechat\controller
+ * @package plugin\wechat\controller
  */
 class Config extends Controller
 {

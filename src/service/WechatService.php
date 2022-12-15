@@ -14,7 +14,7 @@
 // | github 代码仓库：https://github.com/zoujingli/ThinkAdmin
 // +----------------------------------------------------------------------
 
-namespace app\wechat\service;
+namespace plugin\wechat\service;
 
 use think\admin\Exception;
 use think\admin\extend\JsonRpcClient;
@@ -25,7 +25,7 @@ use think\exception\HttpResponseException;
 
 /**
  * Class WechatService
- * @package app\wechat\serivce
+ * @package plugin\wechat\serivce
  *
  * @method \WeChat\Card WeChatCard() static 微信卡券管理
  * @method \WeChat\Custom WeChatCustom() static 微信客服消息

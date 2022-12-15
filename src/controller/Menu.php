@@ -14,16 +14,16 @@
 // | github 代码仓库：https://github.com/zoujingli/ThinkAdmin
 // +----------------------------------------------------------------------
 
-namespace app\wechat\controller;
+namespace plugin\wechat\controller;
 
-use app\wechat\service\WechatService;
+use plugin\wechat\service\WechatService;
 use think\admin\Controller;
 use think\exception\HttpResponseException;
 
 /**
  * 微信菜单管理
  * Class Menu
- * @package app\wechat\controller
+ * @package plugin\wechat\controller
  */
 class Menu extends Controller
 {

@@ -14,16 +14,16 @@
 // | github 代码仓库：https://github.com/zoujingli/ThinkAdmin
 // +----------------------------------------------------------------------
 
-namespace app\wechat\service;
+namespace plugin\wechat\service;
 
-use app\wechat\model\WechatAuto;
+use plugin\wechat\model\WechatAuto;
 use think\admin\Service;
 use think\admin\service\QueueService;
 
 /**
  * 关注自动回复服务
  * Class AutoService
- * @package app\wechat\service
+ * @package plugin\wechat\service
  */
 class AutoService extends Service
 {

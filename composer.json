@@ -9,19 +9,19 @@
     }
   ],
   "require": {
-    "zoujingli/think-library": "v6.0.x-dev",
+    "zoujingli/think-library": "^6.1|v6.0.x-dev",
     "zoujingli/wechat-developer": "^1.2",
-    "zoujingli/think-plugs-admin": "dev-master"
+    "zoujingli/think-plugs-admin": "^1.0|dev-master"
   },
   "autoload": {
     "psr-4": {
-      "app\\wechat\\": "src"
+      "plugin\\wechat\\": "src"
     }
   },
   "extra": {
     "think": {
       "services": [
-        "app\\wechat\\Service"
+        "plugin\\wechat\\Service"
       ]
     }
   },

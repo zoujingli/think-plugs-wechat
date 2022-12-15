@@ -14,11 +14,11 @@
 // | github 代码仓库：https://github.com/zoujingli/ThinkAdmin
 // +----------------------------------------------------------------------
 
-namespace app\wechat\service;
+namespace plugin\wechat\service;
 
-use app\wechat\model\WechatMedia;
-use app\wechat\model\WechatNews;
-use app\wechat\model\WechatNewsArticle;
+use plugin\wechat\model\WechatMedia;
+use plugin\wechat\model\WechatNews;
+use plugin\wechat\model\WechatNewsArticle;
 use think\admin\Service;
 use think\admin\Storage;
 use WeChat\Contracts\MyCurlFile;
@@ -26,7 +26,7 @@ use WeChat\Contracts\MyCurlFile;
 /**
  * 微信素材管理
  * Class MediaService
- * @package app\wechat\service
+ * @package plugin\wechat\service
  */
 class MediaService extends Service
 {

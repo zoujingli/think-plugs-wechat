@@ -14,11 +14,11 @@
 // | github 代码仓库：https://github.com/zoujingli/ThinkAdmin
 // +----------------------------------------------------------------------
 
-namespace app\wechat\controller;
+namespace plugin\wechat\controller;
 
-use app\wechat\model\WechatFans;
-use app\wechat\model\WechatFansTags;
-use app\wechat\service\WechatService;
+use plugin\wechat\model\WechatFans;
+use plugin\wechat\model\WechatFansTags;
+use plugin\wechat\service\WechatService;
 use think\admin\Controller;
 use think\admin\helper\QueryHelper;
 use think\exception\HttpResponseException;
@@ -26,7 +26,7 @@ use think\exception\HttpResponseException;
 /**
  * 微信用户管理
  * Class Fans
- * @package app\wechat\controller
+ * @package plugin\wechat\controller
  */
 class Fans extends Controller
 {

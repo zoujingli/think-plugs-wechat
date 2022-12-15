@@ -14,9 +14,9 @@
 // | github 代码仓库：https://github.com/zoujingli/ThinkAdmin
 // +----------------------------------------------------------------------
 
-namespace app\wechat\controller;
+namespace plugin\wechat\controller;
 
-use app\wechat\model\WechatAuto;
+use plugin\wechat\model\WechatAuto;
 use think\admin\Controller;
 use think\admin\extend\CodeExtend;
 use think\admin\helper\QueryHelper;
@@ -25,7 +25,7 @@ use think\admin\service\SystemService;
 /**
  * 关注自动回复
  * Class Auto
- * @package app\wechat\controller
+ * @package plugin\wechat\controller
  */
 class Auto extends Controller
 {

@@ -14,16 +14,16 @@
 // | github 代码仓库：https://github.com/zoujingli/ThinkAdmin
 // +----------------------------------------------------------------------
 
-namespace app\wechat\service;
+namespace plugin\wechat\service;
 
-use app\wechat\model\WechatFans;
+use plugin\wechat\model\WechatFans;
 use think\admin\Library;
 use think\admin\Service;
 
 /**
  * 微信粉丝信息
  * Class FansService
- * @package app\wechat\service
+ * @package plugin\wechat\service
  */
 class FansService extends Service
 {
