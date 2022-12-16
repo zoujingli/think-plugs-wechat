@@ -50,7 +50,7 @@ class Service extends Plugin
     public static function menu(): array
     {
         // 获取插件标识
-        $code = static::$static->appCopy;
+        $code = static::$static->appName;
 
         // 设置插件菜单
         return [
