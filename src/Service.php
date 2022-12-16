@@ -53,7 +53,7 @@ class Service extends Plugin
                 'name' => '微信管理',
                 'subs' => [
                     ['name' => '微信接口配置', 'icon' => 'layui-icon layui-icon-set', 'node' => 'wechat/config/options'],
-                    ['name' => '微信支付配置', 'icon' => 'layui-icon layui-icon-set', 'node' => 'wechat/config/options'],
+                    ['name' => '微信支付配置', 'icon' => 'layui-icon layui-icon-rmb', 'node' => 'wechat/config/payment'],
                 ]
             ],
             [
