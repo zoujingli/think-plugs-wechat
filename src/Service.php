@@ -13,7 +13,7 @@
 // | gitee 代码仓库：https://gitee.com/zoujingli/think-plugs-wechat
 // +----------------------------------------------------------------------
 
-namespace plugin\wechcomposeat;
+namespace plugin\wechat;
 
 use plugin\wechat\command\Auto;
 use plugin\wechat\command\Fans;
