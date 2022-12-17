@@ -13,7 +13,7 @@
 // | gitee 代码仓库：https://gitee.com/zoujingli/think-plugs-wechat
 // +----------------------------------------------------------------------
 
-namespace plugin\wechat;
+namespace plugin\wechcomposeat;
 
 use plugin\wechat\command\Auto;
 use plugin\wechat\command\Fans;
@@ -50,7 +50,7 @@ class Service extends Plugin
     public static function menu(): array
     {
         // 获取插件标识
-        $code = static::$static->appName;
+        $code = static::$static->appName ?: 'plugin-wechat';
 
         // 设置插件菜单
         return [
@@ -59,7 +59,7 @@ class Service extends Plugin
                 'subs' => [
                     ['name' => '微信接口配置', 'icon' => 'layui-icon layui-icon-set', 'node' => "{$code}/config/options"],
                     ['name' => '微信支付配置', 'icon' => 'layui-icon layui-icon-rmb', 'node' => "{$code}/config/payment"],
-                ]
+                ],
             ],
             [
                 'name' => '微信定制',
@@ -69,8 +69,8 @@ class Service extends Plugin
                     ['name' => '微信菜单配置', 'icon' => 'layui-icon layui-icon-cellphone', 'node' => "{$code}/menu/index"],
                     ['name' => '回复规则管理', 'icon' => 'layui-icon layui-icon-engine', 'node' => "{$code}/keys/index"],
                     ['name' => '关注自动回复', 'icon' => 'layui-icon layui-icon-release', 'node' => "{$code}/auto/index"],
-                ]
-            ]
+                ],
+            ],
         ];
     }
 }
