@@ -184,7 +184,7 @@ class WechatService extends Service
             'encodingaeskey' => sysconf('wechat.encodingaeskey'),
             'mch_id'         => sysconf('wechat.mch_id'),
             'mch_key'        => sysconf('wechat.mch_key'),
-            'cache_path'     => Library::$sapp->getRuntimePath() . 'wechat',
+            'cache_path'     => syspath('runtime/wechat'),
         ];
         $local = LocalStorage::instance();
         switch (strtolower(sysconf('wechat.mch_ssl_type'))) {
