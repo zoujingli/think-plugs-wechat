@@ -1,4 +1,5 @@
 {
+  "type": "think-admin-plugin",
   "name": "zoujingli/think-plugs-wechat",
   "license": "MIT",
   "description": "基于 ThinkAdmin 的 Wechat 模块",
@@ -9,9 +10,11 @@
     }
   ],
   "require": {
-    "zoujingli/think-library": "^6.1|v6.0.x-dev",
-    "zoujingli/wechat-developer": "^1.2",
-    "zoujingli/think-plugs-admin": "dev-master"
+    "zoujingli/think-library": "^6.0|v6.0.x-dev",
+    "zoujingli/wechat-developer": "^1.2|dev-master",
+    "zoujingli/think-plugs-admin": "^1.0|dev-master",
+    "zoujingli/think-plugs-static": "^1.0|dev-master",
+    "zoujingli/think-plugs-installer": "^1.0|dev-master"
   },
   "autoload": {
     "psr-4": {
@@ -27,7 +30,7 @@
   },
   "config": {
     "allow-plugins": {
-      "zoujingli/think-plugs-admin": true
+      "zoujingli/think-plugs-installer": true
     }
   }
 }
