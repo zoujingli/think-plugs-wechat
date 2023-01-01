@@ -1,30 +1,29 @@
 <?php
 
 // +----------------------------------------------------------------------
-// | ThinkAdmin
+// | Wechat Plugin for ThinkAdmin
 // +----------------------------------------------------------------------
-// | 版权所有 2014~2022 广州楚才信息科技有限公司 [ http://www.cuci.cc ]
+// | 版权所有 2014~2023 Anyon<zoujingli@qq.com>
 // +----------------------------------------------------------------------
 // | 官方网站: https://thinkadmin.top
 // +----------------------------------------------------------------------
 // | 开源协议 ( https://mit-license.org )
 // | 免费声明 ( https://thinkadmin.top/disclaimer )
 // +----------------------------------------------------------------------
-// | gitee 代码仓库：https://gitee.com/zoujingli/ThinkAdmin
-// | github 代码仓库：https://github.com/zoujingli/ThinkAdmin
+// | gitee 代码仓库：https://gitee.com/zoujingli/think-plugs-wechat
 // +----------------------------------------------------------------------
 
-namespace plugin\wechat\controller\api;
+namespace app\wechat\controller\api;
 
-use plugin\wechat\service\FansService;
-use plugin\wechat\service\MediaService;
-use plugin\wechat\service\WechatService;
+use app\wechat\service\FansService;
+use app\wechat\service\MediaService;
+use app\wechat\service\WechatService;
 use think\admin\Controller;
 
 /**
  * 微信消息推送处理
  * Class Push
- * @package plugin\wechat\controller\api
+ * @package app\wechat\controller\api
  */
 class Push extends Controller
 {

@@ -1,9 +1,9 @@
 <?php
 
 // +----------------------------------------------------------------------
-// | Wechat for ThinkAdmin
+// | Wechat Plugin for ThinkAdmin
 // +----------------------------------------------------------------------
-// | 版权所有 2014~2022 广州楚才信息科技有限公司 [ http://www.cuci.cc ]
+// | 版权所有 2014~2023 Anyon<zoujingli@qq.com>
 // +----------------------------------------------------------------------
 // | 官方网站: https://thinkadmin.top
 // +----------------------------------------------------------------------
@@ -13,20 +13,25 @@
 // | gitee 代码仓库：https://gitee.com/zoujingli/think-plugs-wechat
 // +----------------------------------------------------------------------
 
-namespace plugin\wechat;
+namespace app\wechat;
 
-use plugin\wechat\command\Auto;
-use plugin\wechat\command\Fans;
-use plugin\wechat\service\AutoService;
+use app\wechat\command\Auto;
+use app\wechat\command\Fans;
+use app\wechat\service\AutoService;
 use think\admin\Plugin;
 
 /**
  * 组件注册服务
  * Class Service
- * @package plugin\wechat
+ * @package app\wechat
  */
 class Service extends Plugin
 {
+    /**
+     * 定义资源目录
+     * @var string
+     */
+    protected $appCopy = 'app/wechat';
 
     /**
      * 注册组件服务

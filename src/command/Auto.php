@@ -1,24 +1,23 @@
 <?php
 
 // +----------------------------------------------------------------------
-// | ThinkAdmin
+// | Wechat Plugin for ThinkAdmin
 // +----------------------------------------------------------------------
-// | 版权所有 2014~2022 广州楚才信息科技有限公司 [ http://www.cuci.cc ]
+// | 版权所有 2014~2023 Anyon<zoujingli@qq.com>
 // +----------------------------------------------------------------------
 // | 官方网站: https://thinkadmin.top
 // +----------------------------------------------------------------------
 // | 开源协议 ( https://mit-license.org )
 // | 免费声明 ( https://thinkadmin.top/disclaimer )
 // +----------------------------------------------------------------------
-// | gitee 代码仓库：https://gitee.com/zoujingli/ThinkAdmin
-// | github 代码仓库：https://github.com/zoujingli/ThinkAdmin
+// | gitee 代码仓库：https://gitee.com/zoujingli/think-plugs-wechat
 // +----------------------------------------------------------------------
 
-namespace plugin\wechat\command;
+namespace app\wechat\command;
 
-use plugin\wechat\model\WechatAuto;
-use plugin\wechat\service\MediaService;
-use plugin\wechat\service\WechatService;
+use app\wechat\model\WechatAuto;
+use app\wechat\service\MediaService;
+use app\wechat\service\WechatService;
 use think\admin\Command;
 use think\console\Input;
 use think\console\input\Argument;
@@ -27,7 +26,7 @@ use think\console\Output;
 /**
  * 向指定用户推送消息
  * Class Auto
- * @package plugin\wechat\command
+ * @package app\wechat\command
  */
 class Auto extends Command
 {

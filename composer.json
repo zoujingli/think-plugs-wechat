@@ -2,6 +2,7 @@
   "type": "think-admin-plugin",
   "name": "zoujingli/think-plugs-wechat",
   "license": "MIT",
+  "homepage": "https://thinkadmin.top",
   "description": "基于 ThinkAdmin 的 Wechat 模块",
   "authors": [
     {
@@ -18,13 +19,24 @@
   },
   "autoload": {
     "psr-4": {
-      "plugin\\wechat\\": "src"
+      "app\\wechat\\": "src"
     }
   },
   "extra": {
+    "plugin": {
+      "path": "vendor/zoujingli/think-plugs-info-wechat",
+      "copy": {
+        "src": "!app/wechat",
+        "stc/database": "database/migrations"
+      },
+      "remove": [
+        "src",
+        "stc"
+      ]
+    },
     "think": {
       "services": [
-        "plugin\\wechat\\Service"
+        "app\\wechat\\Service"
       ]
     }
   },
