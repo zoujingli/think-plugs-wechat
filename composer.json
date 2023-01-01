@@ -24,10 +24,7 @@
         "src": "!app/wechat",
         "stc/database": "database/migrations"
       },
-      "remove": [
-        "src",
-        "stc"
-      ]
+      "clear": true
     },
     "think": {
       "services": [
