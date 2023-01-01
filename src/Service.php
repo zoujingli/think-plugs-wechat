@@ -34,6 +34,12 @@ class Service extends Plugin
     protected $appCopy = 'app/wechat';
 
     /**
+     * 定义当前包名
+     * @var string
+     */
+    protected $package = 'zoujingli/think-plugs-wechat';
+
+    /**
      * 注册组件服务
      * @return void
      */
@@ -54,26 +60,23 @@ class Service extends Plugin
      */
     public static function menu(): array
     {
-        // 获取插件标识
-        $code = static::$static->appName ?: 'plugin-wechat';
-
         // 设置插件菜单
         return [
             [
                 'name' => '微信管理',
                 'subs' => [
-                    ['name' => '微信接口配置', 'icon' => 'layui-icon layui-icon-set', 'node' => "{$code}/config/options"],
-                    ['name' => '微信支付配置', 'icon' => 'layui-icon layui-icon-rmb', 'node' => "{$code}/config/payment"],
+                    ['name' => '微信接口配置', 'icon' => 'layui-icon layui-icon-set', 'node' => "wechat/config/options"],
+                    ['name' => '微信支付配置', 'icon' => 'layui-icon layui-icon-rmb', 'node' => "wechat/config/payment"],
                 ],
             ],
             [
                 'name' => '微信定制',
                 'subs' => [
-                    ['name' => '微信粉丝管理', 'icon' => 'layui-icon layui-icon-username', 'node' => "{$code}/fans/index"],
-                    ['name' => '微信图文管理', 'icon' => 'layui-icon layui-icon-template-1', 'node' => "{$code}/news/index"],
-                    ['name' => '微信菜单配置', 'icon' => 'layui-icon layui-icon-cellphone', 'node' => "{$code}/menu/index"],
-                    ['name' => '回复规则管理', 'icon' => 'layui-icon layui-icon-engine', 'node' => "{$code}/keys/index"],
-                    ['name' => '关注自动回复', 'icon' => 'layui-icon layui-icon-release', 'node' => "{$code}/auto/index"],
+                    ['name' => '微信粉丝管理', 'icon' => 'layui-icon layui-icon-username', 'node' => "wechat/fans/index"],
+                    ['name' => '微信图文管理', 'icon' => 'layui-icon layui-icon-template-1', 'node' => "wechat/news/index"],
+                    ['name' => '微信菜单配置', 'icon' => 'layui-icon layui-icon-cellphone', 'node' => "wechat/menu/index"],
+                    ['name' => '回复规则管理', 'icon' => 'layui-icon layui-icon-engine', 'node' => "wechat/keys/index"],
+                    ['name' => '关注自动回复', 'icon' => 'layui-icon layui-icon-release', 'node' => "wechat/auto/index"],
                 ],
             ],
         ];
