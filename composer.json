@@ -11,8 +11,8 @@
     }
   ],
   "require": {
+    "zoujingli/think-install": "^1.0|dev-master",
     "zoujingli/think-library": "^6.0|v6.0.x-dev",
-    "zoujingli/think-installer": "^1.0|dev-master",
     "zoujingli/wechat-developer": "^1.2|dev-master",
     "zoujingli/think-plugs-admin": "^1.0|dev-master",
     "zoujingli/think-plugs-static": "^1.0|dev-master"
@@ -33,7 +33,7 @@
   },
   "config": {
     "allow-plugins": {
-      "zoujingli/think-installer": true
+      "zoujingli/think-install": true
     }
   }
 }
