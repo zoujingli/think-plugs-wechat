@@ -47,22 +47,20 @@ class MediaService extends Service
     public static function news($id, array $map = []): array
     {
         // 文章主体数据
-        $map1 = ['id' => $id, 'is_deleted' => 0];
-        $data = WechatNews::mk()->where($map1)->where($map)->find();
+        $data = WechatNews::mk()->where(['id' => $id, 'is_deleted' => 0])->where($map)->findOrEmpty()->toArray();
         if (empty($data)) return [];
 
         // 文章内容编号
         $data['articles'] = [];
         $aids = $data['articleids'] = str2arr($data['article_id']);
-        if (empty($data['articleids'])) return $data->toArray();
+        if (empty($data['articleids'])) return $data;
 
         // 文章内容列表
-        $data['articles'] = [];
         $items = WechatNewsArticle::mk()->whereIn('id', $aids)->withoutField('create_by,create_at')->select()->toArray();
         foreach ($aids as $aid) foreach ($items as $item) if (intval($item['id']) === intval($aid)) $data['articles'][] = $item;
 
         // 返回文章内容
-        return $data->toArray();
+        return $data;
     }
 
     /**
