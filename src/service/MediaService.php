@@ -56,9 +56,12 @@ class MediaService extends Service
         $aids = $data['articleids'] = str2arr($data['article_id']);
         if (empty($data['articleids'])) return $data->toArray();
 
-        // 文章内容集合
-        $query = WechatNewsArticle::mk()->whereIn('id', $aids)->orderField('id', $aids);
-        $data['articles'] = $query->withoutField('create_by,create_at')->select()->toArray();
+        // 文章内容列表
+        $data['articles'] = [];
+        $items = WechatNewsArticle::mk()->whereIn('id', $aids)->withoutField('create_by,create_at')->select()->toArray();
+        foreach ($aids as $aid) foreach ($items as $item) if (intval($item['id']) === intval($aid)) $data['articles'][] = $item;
+
+        // 返回文章内容
         return $data->toArray();
     }
 
