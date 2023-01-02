@@ -212,12 +212,12 @@ class Push extends Controller
             case 'text':
                 return $this->_sendMessage('text', ['content' => $data['content']], $custom);
             case 'customservice':
-                return $this->_sendMessage('customservice', ['content' => $data['content']], false);
+                return $this->_sendMessage('customservice', ['content' => $data['content']]);
             case 'voice':
                 if (empty($data['voice_url']) || !($mediaId = MediaService::upload($data['voice_url'], 'voice'))) return false;
                 return $this->_sendMessage('voice', ['media_id' => $mediaId], $custom);
             case 'image':
-                if (empty($data['image_url']) || !($mediaId = MediaService::upload($data['image_url'], 'image'))) return false;
+                if (empty($data['image_url']) || !($mediaId = MediaService::upload($data['image_url']))) return false;
                 return $this->_sendMessage('image', ['media_id' => $mediaId], $custom);
             case 'news':
                 [$news, $articles] = [MediaService::news($data['news_id']), []];
@@ -229,7 +229,7 @@ class Push extends Controller
                 return $this->_sendMessage('news', ['articles' => $articles], $custom);
             case 'music':
                 if (empty($data['music_url']) || empty($data['music_title']) || empty($data['music_desc'])) return false;
-                $mediaId = $data['music_image'] ? MediaService::upload($data['music_image'], 'image') : '';
+                $mediaId = $data['music_image'] ? MediaService::upload($data['music_image']) : '';
                 return $this->_sendMessage('music', [
                     'hqmusicurl'  => $data['music_url'], 'musicurl' => $data['music_url'],
                     'description' => $data['music_desc'], 'title' => $data['music_title'], 'thumb_media_id' => $mediaId,
@@ -276,7 +276,7 @@ class Push extends Controller
                 return $this->_buildMessage($type, ['Music' => ['Title' => $data['title'], 'Description' => $data['description'], 'MusicUrl' => $data['musicurl'], 'HQMusicUrl' => $data['musicurl'], 'ThumbMediaId' => $data['thumb_media_id']]]);
             case 'customservice': // 转交客服消息
                 if ($data['content']) $this->_sendMessage('text', $data, true);
-                return $this->_buildMessage('transfer_customer_service', []);
+                return $this->_buildMessage('transfer_customer_service');
             default:
                 return 'success';
         }
@@ -325,7 +325,7 @@ class Push extends Controller
      */
     private function _arrayChangeKeyCase(array $data): array
     {
-        $data = array_change_key_case($data, CASE_LOWER);
+        $data = array_change_key_case($data);
         foreach ($data as $key => $vo) if (is_array($vo)) {
             $data[$key] = $this->_arrayChangeKeyCase($vo);
         }

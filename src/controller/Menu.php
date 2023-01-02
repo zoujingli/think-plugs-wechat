@@ -129,7 +129,7 @@ class Menu extends Controller
                 $item = $this->_buildMenuDataItem($item);
             } else {
                 $button = ['name' => $item['name'], 'sub_button' => []];
-                foreach ($item['sub_button'] as &$sub) {
+                foreach ($item['sub_button'] as $sub) {
                     $button['sub_button'][] = $this->_buildMenuDataItem($sub);
                 }
                 $item = $button;

@@ -93,7 +93,7 @@ class Auto extends Command
             }
         }
         if ($type === 'image' && !empty($data['image_url'])) {
-            if ($mediaId = MediaService::upload($data['image_url'], 'image')) {
+            if ($mediaId = MediaService::upload($data['image_url'])) {
                 $result = $this->sendMessage('image', ['media_id' => $mediaId]);
             }
         }
@@ -109,7 +109,7 @@ class Auto extends Command
             }
         }
         if ($type === 'music' && !empty($data['music_url']) && !empty($data['music_title']) && !empty($data['music_desc'])) {
-            $mediaId = $data['music_image'] ? MediaService::upload($data['music_image'], 'image') : '';
+            $mediaId = $data['music_image'] ? MediaService::upload($data['music_image']) : '';
             $result = $this->sendMessage('music', [
                 'hqmusicurl'  => $data['music_url'], 'musicurl' => $data['music_url'],
                 'description' => $data['music_desc'], 'title' => $data['music_title'], 'thumb_media_id' => $mediaId,
