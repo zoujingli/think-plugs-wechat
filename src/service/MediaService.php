@@ -114,8 +114,7 @@ class MediaService extends Service
      */
     public static function getQrcode(string $text): ResultInterface
     {
-        return Builder::create()
-            ->data($text)->size(300)->margin(15)
+        return Builder::create()->data($text)->size(300)->margin(15)
             ->writer(new PngWriter())->encoding(new Encoding('UTF-8'))
             ->writerOptions([])->validateResult(false)
             ->roundBlockSizeMode(new RoundBlockSizeModeMargin())
