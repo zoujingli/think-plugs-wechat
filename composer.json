@@ -3,7 +3,7 @@
   "name": "zoujingli/think-plugs-wechat",
   "license": "MIT",
   "homepage": "https://thinkadmin.top",
-  "description": "基于 ThinkAdmin 的 Wechat 模块",
+  "description": "Wechat Plugin for ThinkAdmin",
   "authors": [
     {
       "name": "Anyon",
