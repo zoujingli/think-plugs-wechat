@@ -46,6 +46,6 @@ class InstallWechatData extends Migrator
                 'sort' => '200',
                 'subs' => Service::menu(),
             ],
-        ], ['node' => 'wechat/config/options']);
+        ], ['url' => 'wechat/config/options']);
     }
 }
