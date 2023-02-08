@@ -299,9 +299,6 @@ class Push extends Controller
      * 同步粉丝状态
      * @param boolean $state 订阅状态
      * @return boolean
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\DbException
-     * @throws \think\db\exception\ModelNotFoundException
      */
     private function _setUserInfo(bool $state): bool
     {
