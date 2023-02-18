@@ -16,6 +16,9 @@
 
 use think\migration\Migrator;
 
+@set_time_limit(0);
+@ini_set('memory_limit', -1);
+
 /**
  * 微信模块数据表
  */
@@ -23,9 +26,6 @@ class InstallWechat extends Migrator
 {
     public function change()
     {
-        set_time_limit(0);
-        @ini_set('memory_limit', -1);
-
         $this->_create_wechat_auto();
         $this->_create_wechat_fans();
         $this->_create_wechat_fans_tags();
