@@ -10,7 +10,7 @@
 
 **ThinkAdmin** 后台微信插件，微信基础管理模块，开源免费可商用！
 
-代码主仓库放在`Gitee`，`Github`仅为镜像仓库用于发布`Composer`包。
+代码主仓库放在 **Gitee**，**Github** 仅为镜像仓库用于发布 **Composer** 包。
 
 安装此插件会占用并替换 `app/wechat` 目录 ( 先删再写 )，若有对 `app/wechat` 有修改不建议安装此插件，否则会造成修改的内容丢失！
 
@@ -21,7 +21,7 @@
 ### 安装插件
 
 ```shell
-### 注意，插件仅支持在 ThinkAdmin v6 中使用
+### 注意，插件仅支持在 ThinkAdmin v6.1 中使用
 composer require zoujingli/think-plugs-wechat
 ```
 
