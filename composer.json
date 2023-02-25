@@ -10,14 +10,16 @@
       "email": "zoujingli@qq.com"
     }
   ],
+  "minimum-stability": "dev",
   "require": {
     "php": ">=7.1",
     "ext-json": "*",
     "ext-openssl": "*",
     "ext-mbstring": "*",
     "zoujingli/qrcode": "^1.0",
-    "zoujingli/wechat-developer": "^1.2||dev-master",
-    "zoujingli/think-plugs-admin": "^1.0||dev-master"
+    "zoujingli/think-install": "^1.0||dev-master",
+    "zoujingli/think-library": "^6.1||v6.0.x-dev",
+    "zoujingli/wechat-developer": "^1.2||dev-master"
   },
   "extra": {
     "plugin": {
@@ -34,6 +36,7 @@
     }
   },
   "config": {
+    "sort-packages": true,
     "allow-plugins": {
       "zoujingli/think-install": true
     }
