@@ -5,7 +5,7 @@
 [![Total Downloads](https://poser.pugx.org/zoujingli/think-plugs-wechat/downloads)](https://packagist.org/packages/zoujingli/think-plugs-wechat)
 [![Monthly Downloads](https://poser.pugx.org/zoujingli/think-plugs-wechat/d/monthly)](https://packagist.org/packages/zoujingli/think-plugs-wechat)
 [![Daily Downloads](https://poser.pugx.org/zoujingli/think-plugs-wechat/d/daily)](https://packagist.org/packages/zoujingli/think-plugs-wechat)
-[![PHP Version](https://img.shields.io/badge/php-%3E%3D7.1-8892BF.svg)](http://www.php.net)
+[![PHP Version Require](http://poser.pugx.org/zoujingli/think-plugs-wechat/require/php)](https://packagist.org/packages/think-plugs-wechat)
 [![License](https://poser.pugx.org/zoujingli/think-plugs-wechat/license)](https://packagist.org/packages/zoujingli/think-plugs-wechat)
 
 **ThinkAdmin** 后台微信插件，微信基础管理模块，开源免费可商用！
