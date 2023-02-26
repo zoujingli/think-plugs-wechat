@@ -8,7 +8,7 @@
 [![PHP Version Require](http://poser.pugx.org/zoujingli/think-plugs-wechat/require/php)](https://packagist.org/packages/think-plugs-wechat)
 [![License](https://poser.pugx.org/zoujingli/think-plugs-wechat/license)](https://packagist.org/packages/zoujingli/think-plugs-wechat)
 
-**ThinkAdmin** 后台微信插件，微信基础管理模块，开源免费可商用！
+**ThinkAdmin** 微信管理插件，微信基础管理模块，开源免费可商用！
 
 代码主仓库放在 **Gitee**，**Github** 仅为镜像仓库用于发布 **Composer** 包。
 
