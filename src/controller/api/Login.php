@@ -16,8 +16,7 @@
 
 namespace app\wechat\controller\api;
 
-use app\wechat\service\MediaService;
-use app\wechat\service\WechatService;
+use app\wechat\service\LoginService;
 use think\admin\Controller;
 
 /**
@@ -46,11 +45,9 @@ class Login extends Controller
     public function qrc()
     {
         $mode = intval(input('mode', '0'));
-        $code = $this->prefix . md5(uniqid('t', true) . rand(10000, 99999));
-        $text = url('wechat/api.login/oauth', [], false, true) . "?code={$code}&mode={$mode}";
-        // 生成二维码并返回结果
-        $qrcode = MediaService::getQrcode($text);
-        $this->success('获取二维码成功', ['code' => $code, 'image' => $qrcode->getDataUri()]);
+        $code = $this->prefix . md5(uniqid(strval(rand(0, 99999))));
+        $image = LoginService::qrcode($code, $mode)->getDataUri();
+        $this->success('获取二维码成功', ['code' => $code, 'image' => $image]);
     }
 
     /**
@@ -64,21 +61,10 @@ class Login extends Controller
      */
     public function oauth()
     {
-        $this->code = input('code', '');
-        $this->mode = input('mode', '0');
-        if (stripos($this->code, $this->prefix) === 0) {
-            $this->url = $this->request->url(true);
-            $this->fans = WechatService::getWebOauthInfo($this->url, $this->mode);
-            if (isset($this->fans['openid'])) {
-                $this->fans['token'] = md5(uniqid('t', true) . rand(10000, 99999));
-                $this->app->cache->set("wxlogin{$this->code}", $this->fans, $this->expire);
-                $this->app->cache->set($this->fans['openid'], $this->fans['token'], $this->expire);
-                $this->message = '授权成功';
-                $this->fetch('success');
-            } else {
-                $this->message = '授权失败';
-                $this->fetch('failed');
-            }
+        $data = $this->_vali(['code.default' => '', 'mode.default' => '0']);
+        if (LoginService::instance()->oauth($data['code'], intval($data['mode']))) {
+            $this->message = '授权成功';
+            $this->fetch('success');
         } else {
             $this->message = '授权失败';
             $this->fetch('failed');
@@ -92,11 +78,9 @@ class Login extends Controller
      */
     public function query()
     {
-        $this->code = input('code', '');
-        if (stripos($this->code, $this->prefix) === 0) {
-            $this->ckey = "wxlogin{$this->code}";
-            $this->fans = $this->app->cache->get($this->ckey, new \stdClass());
-            $this->success('获取授权信息', $this->fans);
+        $code = input('code', '');
+        if ($fans = LoginService::instance()->query($code)) {
+            $this->success('获取授权信息', (object)$fans);
         } else {
             $this->error("授权CODE不能为空！");
         }
