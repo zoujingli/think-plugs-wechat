@@ -19,7 +19,7 @@ namespace app\wechat\service;
 use think\admin\Library;
 
 /**
- * 微信授权登录
+ * 微信扫码登录服务
  * @class LoginService
  * @package app\wechat\service
  */
@@ -78,16 +78,11 @@ class LoginService
             $url = Library::$sapp->request->url(true);
             $fans = WechatService::getWebOauthInfo($url, $mode);
             if (isset($fans['openid'])) {
-                $fans['token'] = self::gcode();
                 Library::$sapp->cache->set($auth, $fans, self::expire);
-                Library::$sapp->cache->set($fans['openid'], $fans['token'], self::expire);
                 return true;
-            } else {
-                return false;
             }
-        } else {
-            return false;
         }
+        return false;
     }
 
     /**
