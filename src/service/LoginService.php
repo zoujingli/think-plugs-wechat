@@ -38,6 +38,16 @@ class LoginService
     }
 
     /**
+     * 生成授权码
+     * @param string $code 请求编号
+     * @return string
+     */
+    public static function gauth(string $code): string
+    {
+        return self::prefix . md5($code);
+    }
+
+    /**
      * 生成授权二维码
      * @param string $code 请求编号
      * @param integer $mode 授权模式
@@ -88,15 +98,5 @@ class LoginService
     public static function query(string $code): ?array
     {
         return Library::$sapp->cache->get(self::gauth($code));
-    }
-
-    /**
-     * 生成授权码
-     * @param string $code 请求编号
-     * @return string
-     */
-    private static function gauth(string $code): string
-    {
-        return self::prefix . md5($code);
     }
 }
