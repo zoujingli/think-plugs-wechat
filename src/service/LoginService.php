@@ -94,4 +94,14 @@ class LoginService
     {
         return Library::$sapp->cache->get(self::gauth($code));
     }
+
+    /**
+     * 删除授权缓存
+     * @param string $code
+     * @return bool
+     */
+    public static function remove(string $code): bool
+    {
+        return Library::$sapp->cache->delete(self::gauth($code));
+    }
 }
