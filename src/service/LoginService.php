@@ -16,7 +16,6 @@
 
 namespace app\wechat\service;
 
-use Endroid\QrCode\Writer\Result\ResultInterface;
 use think\admin\Library;
 
 /**
@@ -30,33 +29,32 @@ class LoginService
     private const prefix = 'wxlogin';
 
     /**
-     * 生成登录编码
-     * @param string $code
+     * 生成请求编号
      * @return string
      */
-    public static function gcode(string $code = ''): string
+    public static function gcode(): string
     {
-        return self::prefix . ($code ?: md5(uniqid(strval(rand(0, 10000)), true)));
+        return md5(uniqid(strval(rand(0, 10000)), true));
     }
 
     /**
-     * 获取授权二维码对象
+     * 生成授权二维码
      * @param string $code 请求编号
      * @param integer $mode 授权模式
-     * @return \Endroid\QrCode\Writer\Result\ResultInterface
+     * @return array
      */
-    public static function qrcode(string $code, int $mode = 0): ResultInterface
+    public static function qrcode(string $code, int $mode = 0): array
     {
-        $data = ['code' => $code, 'mode' => $mode];
-        $text = url('wechat/api.login/oauth', $data, false, true);
-        return MediaService::getQrcode($text);
+        $data = ['auth' => self::gauth($code), 'mode' => $mode];
+        $image = MediaService::getQrcode(sysuri('wechat/api.login/oauth', $data, false, true));
+        return ['code' => $code, 'auth' => $data['auth'], 'image' => $image->getDataUri()];
     }
 
     /**
      * 发起网页授权处理
-     * @param string $code 请求编号
+     * @param string $auth 授权编号
      * @param integer $mode 授权模式
-     * @return bool
+     * @return boolean
      * @throws \WeChat\Exceptions\InvalidResponseException
      * @throws \WeChat\Exceptions\LocalCacheException
      * @throws \think\admin\Exception
@@ -64,13 +62,14 @@ class LoginService
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
      */
-    public static function oauth(string $code, int $mode = 0): bool
+    public static function oauth(string $auth = '', int $mode = 0): bool
     {
-        if (stripos($code, self::prefix) === 0) {
-            $fans = WechatService::getWebOauthInfo(Library::$sapp->request->url(true), $mode);
+        if (stripos($auth, self::prefix) === 0) {
+            $url = Library::$sapp->request->url(true);
+            $fans = WechatService::getWebOauthInfo($url, $mode);
             if (isset($fans['openid'])) {
-                $fans['token'] = md5(uniqid(strval(rand(0, 10000)), true));
-                Library::$sapp->cache->set("wxlogin{$code}", $fans, self::expire);
+                $fans['token'] = self::gcode();
+                Library::$sapp->cache->set($auth, $fans, self::expire);
                 Library::$sapp->cache->set($fans['openid'], $fans['token'], self::expire);
                 return true;
             } else {
@@ -82,16 +81,22 @@ class LoginService
     }
 
     /**
-     * 检查微信是否已授权
+     * 检查是否授权
      * @param string $code 请求编号
-     * @return false|mixed
+     * @return ?array
      */
-    public static function query(string $code)
+    public static function query(string $code): ?array
     {
-        if (stripos($code, self::prefix) === 0) {
-            return Library::$sapp->cache->get("wxlogin{$code}", []);
-        } else {
-            return false;
-        }
+        return Library::$sapp->cache->get(self::gauth($code));
+    }
+
+    /**
+     * 生成授权码
+     * @param string $code 请求编号
+     * @return string
+     */
+    private static function gauth(string $code): string
+    {
+        return self::prefix . md5($code);
     }
 }
