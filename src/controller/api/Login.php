@@ -20,34 +20,22 @@ use app\wechat\service\LoginService;
 use think\admin\Controller;
 
 /**
- * 微信扫码授权登录
+ * 微信扫码登录
  * Class Login
  * @package app\wechat\controller\api
  */
 class Login extends Controller
 {
     /**
-     * 数据缓存时间
-     * @var integer
-     */
-    protected $expire = 3600;
-
-    /**
-     * 授权码前缀
-     * @var string
-     */
-    protected $prefix = 'wxlogin';
-
-    /**
      * 扫描显示二维码
      * @return void
      */
     public function qrc()
     {
+        $code = LoginService::gcode();
         $mode = intval(input('mode', '0'));
-        $code = $this->prefix . md5(uniqid(strval(rand(0, 99999))));
         $image = LoginService::qrcode($code, $mode)->getDataUri();
-        $this->success('获取二维码成功', ['code' => $code, 'image' => $image]);
+        $this->success('生成登录二维码', ['code' => $code, 'image' => $image]);
     }
 
     /**
@@ -62,12 +50,10 @@ class Login extends Controller
     public function oauth()
     {
         $data = $this->_vali(['code.default' => '', 'mode.default' => '0']);
-        if (LoginService::instance()->oauth($data['code'], intval($data['mode']))) {
-            $this->message = '授权成功';
-            $this->fetch('success');
+        if (LoginService::oauth($data['code'], intval($data['mode']))) {
+            $this->fetch('success', ['message' => '授权成功']);
         } else {
-            $this->message = '授权失败';
-            $this->fetch('failed');
+            $this->fetch('failed', ['message' => '授权失败']);
         }
     }
 
@@ -79,7 +65,7 @@ class Login extends Controller
     public function query()
     {
         $code = input('code', '');
-        if ($fans = LoginService::instance()->query($code)) {
+        if ($fans = LoginService::query($code)) {
             $this->success('获取授权信息', (object)$fans);
         } else {
             $this->error("授权CODE不能为空！");

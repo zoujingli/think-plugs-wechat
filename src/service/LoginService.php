@@ -17,17 +17,27 @@
 namespace app\wechat\service;
 
 use Endroid\QrCode\Writer\Result\ResultInterface;
-use think\admin\Service;
+use think\admin\Library;
 
 /**
  * 微信授权登录
  * @class LoginService
  * @package app\wechat\service
  */
-class LoginService extends Service
+class LoginService
 {
-    private $expire = 3600;
-    private $prefix = 'wxlogin';
+    private const expire = 3600;
+    private const prefix = 'wxlogin';
+
+    /**
+     * 生成登录编码
+     * @param string $code
+     * @return string
+     */
+    public static function gcode(string $code = ''): string
+    {
+        return self::prefix . ($code ?: md5(uniqid(strval(rand(0, 10000)), true)));
+    }
 
     /**
      * 获取授权二维码对象
@@ -54,14 +64,14 @@ class LoginService extends Service
      * @throws \think\db\exception\DbException
      * @throws \think\db\exception\ModelNotFoundException
      */
-    public function oauth(string $code, int $mode = 0): bool
+    public static function oauth(string $code, int $mode = 0): bool
     {
-        if (stripos($code, $this->prefix) === 0) {
-            $fans = WechatService::getWebOauthInfo($this->app->request->url(true), $mode);
+        if (stripos($code, self::prefix) === 0) {
+            $fans = WechatService::getWebOauthInfo(Library::$sapp->request->url(true), $mode);
             if (isset($fans['openid'])) {
-                $fans['token'] = md5(uniqid('t', true) . rand(10000, 99999));
-                $this->app->cache->set("wxlogin{$code}", $fans, $this->expire);
-                $this->app->cache->set($fans['openid'], $fans['token'], $this->expire);
+                $fans['token'] = md5(uniqid(strval(rand(0, 10000)), true));
+                Library::$sapp->cache->set("wxlogin{$code}", $fans, self::expire);
+                Library::$sapp->cache->set($fans['openid'], $fans['token'], self::expire);
                 return true;
             } else {
                 return false;
@@ -76,10 +86,10 @@ class LoginService extends Service
      * @param string $code 请求编号
      * @return false|mixed
      */
-    public function query(string $code)
+    public static function query(string $code)
     {
-        if (stripos($code, $this->prefix) === 0) {
-            return $this->app->cache->get("wxlogin{$code}", []);
+        if (stripos($code, self::prefix) === 0) {
+            return Library::$sapp->cache->get("wxlogin{$code}", []);
         } else {
             return false;
         }
