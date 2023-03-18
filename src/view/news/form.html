@@ -152,7 +152,7 @@
                     $event.stopPropagation();
                     if (!vali.checkAllInput()) return;
                     if (editor.getData().length < 1) {
-                        return $.msg.tips('内容不能为空，请输入内容！');
+                        return $.msg.notify('操作提示', '文章内容不能为空，请输入内容！', 3000, {type: 'error', width: '400px'})
                     }
                     for (var i in $rootScope.list) if (parseInt(i) !== parseInt(index)) {
                         $rootScope.list[i].active = false;
