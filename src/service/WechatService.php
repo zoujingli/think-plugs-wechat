@@ -77,6 +77,10 @@ use think\exception\HttpResponseException;
  * @method \WePay\Transfers WePayTransfers() static 微信商户打款到零钱
  * @method \WePay\TransfersBank WePayTransfersBank() static 微信商户打款到银行卡
  *
+ * ----- WePayV3 -----
+ * @method \WePayV3\Transfers WePayV3Transfers() static 微信商家转账到零钱
+ * @method \WePayV3\ProfitSharing WePayV3ProfitSharing() static 微信商户分账
+ *
  * ----- WeOpen -----
  * @method \WeOpen\Login WeOpenLogin() static 第三方微信登录
  * @method \WeOpen\Service WeOpenService() static 第三方服务
@@ -127,7 +131,7 @@ class WechatService extends Service
      */
     private static function parseName(string $name): array
     {
-        foreach (['WeChat', 'WeMini', 'WeOpen', 'WePay', 'ThinkService'] as $type) {
+        foreach (['WeChat', 'WeMini', 'WeOpen', 'WePayV3', 'WePay', 'ThinkService'] as $type) {
             if (strpos($name, $type) === 0) {
                 [, $base] = explode($type, $name);
                 return [$type, $base, "\\{$type}\\{$base}"];
@@ -185,6 +189,7 @@ class WechatService extends Service
             'encodingaeskey' => sysconf('wechat.encodingaeskey'),
             'mch_id'         => sysconf('wechat.mch_id'),
             'mch_key'        => sysconf('wechat.mch_key'),
+            'mch_v3_key'     => sysconf('wechat.mch_v3_key'),
             'cache_path'     => syspath('runtime/wechat'),
         ];
         $local = LocalStorage::instance();
