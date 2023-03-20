@@ -21,8 +21,11 @@
 ### 安装插件
 
 ```shell
+### 安装前建议尝试更新所有组件
+composer update --optimize-autoloader
+
 ### 注意，插件仅支持在 ThinkAdmin v6.1 中使用
-composer require zoujingli/think-plugs-wechat
+composer require zoujingli/think-plugs-wechat --optimize-autoloader
 ```
 
 ### 卸载插件
