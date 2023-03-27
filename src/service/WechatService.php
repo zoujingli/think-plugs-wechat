@@ -161,9 +161,6 @@ class WechatService extends Service
      * 获取接口授权模式
      * @return string
      * @throws \think\admin\Exception
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\DbException
-     * @throws \think\db\exception\ModelNotFoundException
      */
     public static function getType(): string
     {

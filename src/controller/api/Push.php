@@ -78,9 +78,9 @@ class Push extends Controller
 
     /**
      * 获取网络出口IP
-     * @return mixed
+     * @return string
      */
-    public function geoip()
+    public function geoip(): string
     {
         return $this->request->ip();
     }
