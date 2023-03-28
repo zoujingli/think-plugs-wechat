@@ -8,13 +8,13 @@
         <ul class='mobile-footer notselect'>
             <li class="parent-menu" style="{{getItemStyle(list)}}" ng-repeat="one in list">
                 <a ng-click="setActiveItem(one)" ng-class="{true:'active'}[one.active]">
-                    <i class="icon-sub" ng-if="one.sub_button.length>0"></i> <span ng-bind="one.name"></span>
+                    <i class="icon-sub" ng-if="one.sub_button.length>0"></i> <span ng-bind="one.name||'-'"></span>
                 </a>
                 <i class="close layui-bg-gray layui-icon" ng-click="delItem(one)">&#x1006;</i>
                 <div class="sub-menu text-center" ng-if="one.active||one.show">
                     <ul>
                         <li ng-repeat="two in one.sub_button">
-                            <a class="bottom-border" ng-click="setActiveItem(one,two)" ng-class="{true:'active'}[two.active]"><span ng-bind="two.name"></span></a>
+                            <a class="bottom-border" ng-click="setActiveItem(one,two)" ng-class="{true:'active'}[two.active]"><span ng-bind="two.name||'-'"></span></a>
                             <i class="close layui-bg-gray layui-icon" ng-click="delItem(one,two)">&#x1006;</i>
                         </li>
                         <li class="menu-add" ng-if="one.sub_button.length<5"><a ng-click="addItem(one.sub_button)"><i class="icon-add"></i></a></li>
@@ -200,5 +200,4 @@
         });
     });
 </script>
-
 {/block}
