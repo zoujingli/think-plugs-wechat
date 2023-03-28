@@ -197,6 +197,9 @@ class WechatService extends Service
             case 'pem':
                 $options['ssl_key'] = $local->path(sysconf('wechat.mch_ssl_key'), true);
                 $options['ssl_cer'] = $local->path(sysconf('wechat.mch_ssl_cer'), true);
+                
+                $options['cert_private'] = $local->path(sysconf('wechat.mch_ssl_key'), true);
+                $options['cert_public'] = $local->path(sysconf('wechat.mch_ssl_cer'), true);
                 break;
         }
         return $options;
