@@ -23,7 +23,7 @@ use think\admin\storage\LocalStorage;
 
 /**
  * 微信授权绑定
- * Class Config
+ * @class Config
  * @package app\wechat\controller
  */
 class Config extends Controller

@@ -24,7 +24,8 @@ use think\admin\storage\LocalStorage;
 use think\exception\HttpResponseException;
 
 /**
- * Class WechatService
+ * 微信接口调度服务
+ * @class WechatService
  * @package app\wechat\serivce
  *
  * @method \WeChat\Card WeChatCard() static 微信卡券管理
@@ -97,9 +98,6 @@ class WechatService extends Service
      * @param array $arguments
      * @return mixed
      * @throws \think\admin\Exception
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\DbException
-     * @throws \think\db\exception\ModelNotFoundException
      */
     public static function __callStatic(string $name, array $arguments)
     {
@@ -144,9 +142,6 @@ class WechatService extends Service
      * 获取当前微信APPID
      * @return string
      * @throws \think\admin\Exception
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\DbException
-     * @throws \think\db\exception\ModelNotFoundException
      */
     public static function getAppid(): string
     {
@@ -173,9 +168,6 @@ class WechatService extends Service
      * 获取公众号配置参数
      * @return array
      * @throws \think\admin\Exception
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\DbException
-     * @throws \think\db\exception\ModelNotFoundException
      */
     public static function getConfig(): array
     {
@@ -195,11 +187,10 @@ class WechatService extends Service
                 $options['ssl_p12'] = $local->path(sysconf('wechat.mch_ssl_p12'), true);
                 break;
             case 'pem':
-                $options['ssl_key'] = $local->path(sysconf('wechat.mch_ssl_key'), true);
                 $options['ssl_cer'] = $local->path(sysconf('wechat.mch_ssl_cer'), true);
-                
-                $options['cert_private'] = $local->path(sysconf('wechat.mch_ssl_key'), true);
+                $options['ssl_key'] = $local->path(sysconf('wechat.mch_ssl_key'), true);
                 $options['cert_public'] = $local->path(sysconf('wechat.mch_ssl_cer'), true);
+                $options['cert_private'] = $local->path(sysconf('wechat.mch_ssl_key'), true);
                 break;
         }
         return $options;
@@ -214,9 +205,6 @@ class WechatService extends Service
      * @throws \WeChat\Exceptions\InvalidResponseException
      * @throws \WeChat\Exceptions\LocalCacheException
      * @throws \think\admin\Exception
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\DbException
-     * @throws \think\db\exception\ModelNotFoundException
      */
     public static function getWebOauthInfo(string $source, int $isfull = 0, bool $redirect = true): array
     {
@@ -280,9 +268,6 @@ class WechatService extends Service
      * @throws \WeChat\Exceptions\InvalidResponseException
      * @throws \WeChat\Exceptions\LocalCacheException
      * @throws \think\admin\Exception
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\DbException
-     * @throws \think\db\exception\ModelNotFoundException
      */
     public static function getWebJssdkSign(?string $location = null): array
     {

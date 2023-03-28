@@ -10,7 +10,6 @@
       "email": "zoujingli@qq.com"
     }
   ],
-  "minimum-stability": "dev",
   "require": {
     "php": ">=7.1",
     "ext-json": "*",
@@ -35,6 +34,7 @@
       ]
     }
   },
+  "minimum-stability": "dev",
   "config": {
     "sort-packages": true,
     "allow-plugins": {

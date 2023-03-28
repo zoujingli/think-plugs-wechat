@@ -22,7 +22,7 @@ use think\admin\Controller;
 
 /**
  * 微信消息推送处理
- * Class Push
+ * @class Push
  * @package app\wechat\controller\api
  */
 class Push extends Controller

@@ -22,7 +22,7 @@ use think\exception\HttpResponseException;
 
 /**
  * 微信菜单管理
- * Class Menu
+ * @class Menu
  * @package app\wechat\controller
  */
 class Menu extends Controller

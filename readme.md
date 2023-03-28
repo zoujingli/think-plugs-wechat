@@ -31,6 +31,9 @@ composer require zoujingli/think-plugs-wechat --optimize-autoloader
 ### 卸载插件
 
 ```shell
+### 安装前建议尝试更新所有组件
+composer update --optimize-autoloader
+
 ### 插件卸载不会删除数据表和 app/wechat 的代码
 ### 卸载后通过 composer update 时不会再更新，其他依赖除外
 composer remove zoujingli/think-plugs-wechat
