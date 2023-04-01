@@ -21,6 +21,10 @@
     "zoujingli/wechat-developer": "^1.2||dev-master"
   },
   "extra": {
+    "config": {
+      "type": "module",
+      "name": "微信管理模块"
+    },
     "plugin": {
       "copy": {
         "src": "!app/wechat",
