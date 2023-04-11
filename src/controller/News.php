@@ -73,7 +73,7 @@ class News extends Controller
     public function add()
     {
         if ($this->request->isGet()) {
-            $this->title = '新建图文';
+            $this->title = '新建微信图文';
             $this->fetch('form');
         } else {
             $update = [
@@ -103,7 +103,7 @@ class News extends Controller
             if ($this->request->get('output') === 'json') {
                 $this->success('获取数据成功！', MediaService::news($this->id));
             } else {
-                $this->title = '编辑图文';
+                $this->title = '编辑微信图文';
                 $this->fetch('form');
             }
         } else {
@@ -136,7 +136,7 @@ class News extends Controller
         $ids = [];
         foreach ($data as $vo) {
             if (empty($vo['digest'])) {
-                $vo['digest'] = mb_substr(strip_tags(str_replace(["\s", '　'], '', $vo['content'])), 0, 120);
+                $vo['digest'] = mb_substr(strip_tags(preg_replace('#(\s+|　)#', '', $vo['content'])), 0, 120);
             }
             $vo['create_at'] = date('Y-m-d H:i:s');
             if (empty($vo['id'])) {
