@@ -68,9 +68,9 @@ class InstallWechat extends Migrator
             ->addColumn('video_title', 'string', ['limit' => 100, 'default' => '', 'null' => true, 'comment' => '视频标题'])
             ->addColumn('video_url', 'string', ['limit' => 255, 'default' => '', 'null' => true, 'comment' => '视频URL'])
             ->addColumn('video_desc', 'string', ['limit' => 255, 'default' => '', 'null' => true, 'comment' => '视频描述'])
-            ->addColumn('news_id', 'integer', ['limit' => 20, 'default' => 0, 'null' => true, 'comment' => '图文ID'])
+            ->addColumn('news_id', 'integer', ['limit' => 11, 'default' => 0, 'null' => true, 'comment' => '图文ID'])
             ->addColumn('status', 'integer', ['limit' => 1, 'default' => 1, 'null' => true, 'comment' => '状态(0禁用,1启用)'])
-            ->addColumn('create_by', 'integer', ['limit' => 20, 'default' => 0, 'null' => true, 'comment' => '创建人'])
+            ->addColumn('create_by', 'integer', ['limit' => 11, 'default' => 0, 'null' => true, 'comment' => '创建人'])
             ->addColumn('create_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'null' => true, 'comment' => '创建时间'])
             ->addIndex('type', ['name' => 'idx_wechat_auto_type'])
             ->addIndex('time', ['name' => 'idx_wechat_auto_time'])
@@ -79,7 +79,7 @@ class InstallWechat extends Migrator
             ->save();
 
         // 修改主键长度
-        $this->table($table)->changeColumn('id', 'integer', ['limit' => 20, 'identity' => true]);
+        // $this->table($table)->changeColumn('id', 'integer', ['limit' => 20, 'identity' => true]);
     }
 
     /**
@@ -114,7 +114,7 @@ class InstallWechat extends Migrator
             ->addColumn('city', 'string', ['limit' => 50, 'default' => '', 'null' => true, 'comment' => '用户所在城市'])
             ->addColumn('language', 'string', ['limit' => 50, 'default' => '', 'null' => true, 'comment' => '用户的语言(zh_CN)'])
             ->addColumn('headimgurl', 'string', ['limit' => 500, 'default' => '', 'null' => true, 'comment' => '用户头像'])
-            ->addColumn('subscribe_time', 'integer', ['limit' => 20, 'default' => 0, 'null' => true, 'comment' => '关注时间'])
+            ->addColumn('subscribe_time', 'integer', ['limit' => 11, 'default' => 0, 'null' => true, 'comment' => '关注时间'])
             ->addColumn('subscribe_at', 'datetime', ['default' => null, 'null' => true, 'comment' => '关注时间'])
             ->addColumn('remark', 'string', ['limit' => 50, 'default' => '', 'null' => true, 'comment' => '备注'])
             ->addColumn('subscribe_scene', 'string', ['limit' => 200, 'default' => '', 'null' => true, 'comment' => '扫码关注场景'])
@@ -128,7 +128,7 @@ class InstallWechat extends Migrator
             ->save();
 
         // 修改主键长度
-        $this->table($table)->changeColumn('id', 'integer', ['limit' => 20, 'identity' => true]);
+        // $this->table($table)->changeColumn('id', 'integer', ['limit' => 20, 'identity' => true]);
     }
 
     /**
@@ -152,14 +152,14 @@ class InstallWechat extends Migrator
         ])
             ->addColumn('appid', 'string', ['limit' => 50, 'default' => '', 'null' => true, 'comment' => '公众号APPID'])
             ->addColumn('name', 'string', ['limit' => 35, 'default' => '', 'null' => true, 'comment' => '标签名称'])
-            ->addColumn('count', 'integer', ['limit' => 20, 'default' => 0, 'null' => true, 'comment' => '总数'])
+            ->addColumn('count', 'integer', ['limit' => 11, 'default' => 0, 'null' => true, 'comment' => '总数'])
             ->addColumn('create_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'null' => true, 'comment' => '创建日期'])
             ->addIndex('id', ['name' => 'idx_wechat_fans_tags_id'])
             ->addIndex('appid', ['name' => 'idx_wechat_fans_tags_appid'])
             ->save();
 
         // 修改主键长度
-        $this->table($table)->changeColumn('id', 'integer', ['limit' => 20, 'identity' => true]);
+        // $this->table($table)->changeColumn('id', 'integer', ['limit' => 20, 'identity' => true]);
     }
 
     /**
@@ -194,10 +194,10 @@ class InstallWechat extends Migrator
             ->addColumn('video_title', 'string', ['limit' => 100, 'default' => '', 'null' => true, 'comment' => '视频标题'])
             ->addColumn('video_url', 'string', ['limit' => 255, 'default' => '', 'null' => true, 'comment' => '视频URL'])
             ->addColumn('video_desc', 'string', ['limit' => 255, 'default' => '', 'null' => true, 'comment' => '视频描述'])
-            ->addColumn('news_id', 'integer', ['limit' => 20, 'default' => 0, 'null' => true, 'comment' => '图文ID'])
-            ->addColumn('sort', 'integer', ['limit' => 20, 'default' => 0, 'null' => true, 'comment' => '排序字段'])
+            ->addColumn('news_id', 'integer', ['limit' => 11, 'default' => 0, 'null' => true, 'comment' => '图文ID'])
+            ->addColumn('sort', 'integer', ['limit' => 11, 'default' => 0, 'null' => true, 'comment' => '排序字段'])
             ->addColumn('status', 'integer', ['limit' => 1, 'default' => 1, 'null' => true, 'comment' => '状态(0禁用,1启用)'])
-            ->addColumn('create_by', 'integer', ['limit' => 20, 'default' => 0, 'null' => true, 'comment' => '创建人'])
+            ->addColumn('create_by', 'integer', ['limit' => 11, 'default' => 0, 'null' => true, 'comment' => '创建人'])
             ->addColumn('create_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'null' => true, 'comment' => '创建时间'])
             ->addIndex('appid', ['name' => 'idx_wechat_keys_appid'])
             ->addIndex('type', ['name' => 'idx_wechat_keys_type'])
@@ -205,7 +205,7 @@ class InstallWechat extends Migrator
             ->save();
 
         // 修改主键长度
-        $this->table($table)->changeColumn('id', 'integer', ['limit' => 20, 'identity' => true]);
+        // $this->table($table)->changeColumn('id', 'integer', ['limit' => 20, 'identity' => true]);
     }
 
     /**
@@ -241,7 +241,7 @@ class InstallWechat extends Migrator
             ->save();
 
         // 修改主键长度
-        $this->table($table)->changeColumn('id', 'integer', ['limit' => 20, 'identity' => true]);
+        // $this->table($table)->changeColumn('id', 'integer', ['limit' => 20, 'identity' => true]);
     }
 
     /**
@@ -268,13 +268,13 @@ class InstallWechat extends Migrator
             ->addColumn('article_id', 'string', ['limit' => 60, 'default' => '', 'null' => true, 'comment' => '关联图文ID(用英文逗号做分割)'])
             ->addColumn('is_deleted', 'integer', ['limit' => 1, 'default' => 0, 'null' => true, 'comment' => '删除状态(0未删除,1已删除)'])
             ->addColumn('create_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'null' => true, 'comment' => '创建时间'])
-            ->addColumn('create_by', 'integer', ['limit' => 20, 'default' => 0, 'null' => true, 'comment' => '创建人'])
+            ->addColumn('create_by', 'integer', ['limit' => 11, 'default' => 0, 'null' => true, 'comment' => '创建人'])
             ->addIndex('article_id', ['name' => 'idx_wechat_news_article_id'])
             ->addIndex('media_id', ['name' => 'idx_wechat_news_media_id'])
             ->save();
 
         // 修改主键长度
-        $this->table($table)->changeColumn('id', 'integer', ['limit' => 20, 'identity' => true]);
+        // $this->table($table)->changeColumn('id', 'integer', ['limit' => 20, 'identity' => true]);
     }
 
     /**
@@ -303,11 +303,11 @@ class InstallWechat extends Migrator
             ->addColumn('digest', 'string', ['limit' => 300, 'default' => '', 'null' => true, 'comment' => '摘要内容'])
             ->addColumn('content', 'text', ['default' => null, 'null' => true, 'comment' => '图文内容'])
             ->addColumn('content_source_url', 'string', ['limit' => 200, 'default' => '', 'null' => true, 'comment' => '原文地址'])
-            ->addColumn('read_num', 'integer', ['limit' => 20, 'default' => 0, 'null' => true, 'comment' => '阅读数量'])
+            ->addColumn('read_num', 'integer', ['limit' => 11, 'default' => 0, 'null' => true, 'comment' => '阅读数量'])
             ->addColumn('create_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'null' => true, 'comment' => '创建时间'])
             ->save();
 
         // 修改主键长度
-        $this->table($table)->changeColumn('id', 'integer', ['limit' => 20, 'identity' => true]);
+        // $this->table($table)->changeColumn('id', 'integer', ['limit' => 20, 'identity' => true]);
     }
 }
