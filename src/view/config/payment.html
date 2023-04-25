@@ -24,21 +24,22 @@
         <label class="layui-form-item relative block">
             <span class="help-label"><b>微信商户 V2 密钥</b>MCH_KEY</span>
             <input name="wechat.mch_key" vali-name="微信商户V2密钥" placeholder="请输入微信商户V2密钥（必填）" maxlength="32" pattern=".{32}" required value="{:sysconf('wechat.mch_key')}" class="layui-input">
-            <span class="help-block">微信商户密钥，需要在微信商户平台操作设置操作密码并获取商户接口密钥</span>
+            <span class="help-block">微信商户 V2 密钥，需要在微信商户平台操作设置操作密码并获取商户接口密钥</span>
         </label>
 
         <label class="layui-form-item relative block">
             <span class="help-label"><b>微信商户 V3 密钥</b>MCH_V3_KEY</span>
             <input name="wechat.mch_v3_key" vali-name="微信商户V3密钥" placeholder="请输入微信商户V3密钥（必填）" maxlength="32" pattern=".{32}" required value="{:sysconf('wechat.mch_v3_key')}" class="layui-input">
-            <span class="help-block">微信商户密钥，需要在微信商户平台操作设置操作密码并获取商户接口密钥</span>
+            <span class="help-block">微信商户 V3 密钥，需要在微信商户平台操作设置操作密码并获取商户接口密钥</span>
         </label>
 
         <div class="hr-line-dashed"></div>
 
         <div class="layui-form-item">
-            <span class="help-label label-required-prev"><b>微信商户证书</b>MCH_CERT_FILE</span>
+            <span class="help-label label-required-prev"><b>微信商户证书文件</b>MCH_CERT_FILE</span>
             <div class="margin-top-10">
-                {foreach ['none'=>'暂不使用证书', 'pem'=>'上传 PEM 证书', 'p12'=>'上传 P12 证书'] as $k=>$v}
+                <!-- 'none'=>'暂不使用证书' -->
+                {foreach ['pem'=>'上传 PEM 证书', 'p12'=>'上传 P12 证书'] as $k=>$v}
                 <input type="radio" data-pem-type="{$k}" name="wechat.mch_ssl_type" value="{$k}" title="{$v}" lay-filter="data-mch-type">
                 {/foreach}
                 <p class="help-block font-code">请选择需要上传证书类型，P12 或 PEM 二选一，证书需要从微信商户平台获取</p>
@@ -94,6 +95,6 @@
         function apply(data) {
             return $('[data-mch-type="' + data.value + '"]').show().siblings('[data-mch-type]').hide();
         }
-    })("{:sysconf('wechat.mch_ssl_type')}" || 'none');
+    })("{:sysconf('wechat.mch_ssl_type')}" || 'pem');
 </script>
 {/block}

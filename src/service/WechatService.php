@@ -189,7 +189,9 @@ class WechatService extends Service
                     sysconf('wechat.mch_ssl_cer', $local->set(Storage::name($certs['pkey'], 'pem'), $certs['pkey'], true)['url']);
                     sysconf('wechat.mch_ssl_key', $local->set(Storage::name($certs['cert'], 'pem'), $certs['cert'], true)['url']);
                     static::withWxpayCert($options);
-                } else throw new Exception('商户账号与 P12 证书不匹配！');
+                } else {
+                    throw new Exception('商户账号与 P12 证书不匹配！');
+                }
             }
         }
         return $options;
@@ -203,11 +205,31 @@ class WechatService extends Service
      */
     private static function withWxpayCert(array &$options): array
     {
+        // 文本模式主要是为了解决分布式部署
         $local = LocalStorage::instance();
-        $sslCer = $local->path(sysconf('wechat.mch_ssl_cer'), true);
-        $sslKey = $local->path(sysconf('wechat.mch_ssl_key'), true);
-        if (is_file($sslCer)) $options['cert_public'] = $options['ssl_cer'] = $sslCer;
-        if (is_file($sslKey)) $options['cert_private'] = $options['ssl_key'] = $sslKey;
+        if (!empty($data = sysdata('plugin.wechat.payment.config'))) {
+            if (empty($data['ssl_key_text']) || empty($data['ssl_cer_text'])) {
+                throw new Exception('商户证书不能为空！');
+            }
+            $name1 = Storage::name($data['ssl_cer_text'], 'pem');
+            $name2 = Storage::name($data['ssl_key_text'], 'pem');
+            if ($local->has($name1, true) && $local->has($name2, true)) {
+                $sslCer = $local->set($name1, $data['ssl_cer_text'], true)['file'];
+                $sslKey = $local->set($name2, $data['ssl_key_text'], true)['file'];
+            } else {
+                $sslCer = $local->path($name1, true);
+                $sslKey = $local->path($name2, true);
+            }
+            $options['ssl_cer'] = $sslCer;
+            $options['ssl_key'] = $sslKey;
+            $options['cert_public'] = $sslCer;
+            $options['cert_private'] = $sslKey;
+        } else {
+            $sslCer = $local->path(sysconf('wechat.mch_ssl_cer'), true);
+            $sslKey = $local->path(sysconf('wechat.mch_ssl_key'), true);
+            if (is_file($sslCer)) $options['cert_public'] = $options['ssl_cer'] = $sslCer;
+            if (is_file($sslKey)) $options['cert_private'] = $options['ssl_key'] = $sslKey;
+        }
         return $options;
     }
 
