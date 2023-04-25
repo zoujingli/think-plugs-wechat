@@ -20,6 +20,7 @@ use think\admin\Exception;
 use think\admin\extend\JsonRpcClient;
 use think\admin\Library;
 use think\admin\Service;
+use think\admin\Storage;
 use think\admin\storage\LocalStorage;
 use think\exception\HttpResponseException;
 
@@ -181,18 +182,32 @@ class WechatService extends Service
             'mch_v3_key'     => sysconf('wechat.mch_v3_key'),
             'cache_path'     => syspath('runtime/wechat'),
         ];
-        $local = LocalStorage::instance();
-        switch (strtolower(sysconf('wechat.mch_ssl_type'))) {
-            case 'p12':
-                $options['ssl_p12'] = $local->path(sysconf('wechat.mch_ssl_p12'), true);
-                break;
-            case 'pem':
-                $options['ssl_cer'] = $local->path(sysconf('wechat.mch_ssl_cer'), true);
-                $options['ssl_key'] = $local->path(sysconf('wechat.mch_ssl_key'), true);
-                $options['cert_public'] = $local->path(sysconf('wechat.mch_ssl_cer'), true);
-                $options['cert_private'] = $local->path(sysconf('wechat.mch_ssl_key'), true);
-                break;
+        if (in_array($sslType = strtolower(sysconf('wechat.mch_ssl_type')), ['p12', 'pem'])) {
+            [$local = LocalStorage::instance(), $options = static::withWxpayCert($options)];
+            if ((empty($options['ssl_cer']) || empty($options['ssl_key'])) && $sslType === 'p12') {
+                if (openssl_pkcs12_read($local->get(sysconf('wechat.mch_ssl_p12'), true), $certs, $options['mch_id'])) {
+                    sysconf('wechat.mch_ssl_cer', $local->set(Storage::name($certs['pkey'], 'pem'), $certs['pkey'], true)['url']);
+                    sysconf('wechat.mch_ssl_key', $local->set(Storage::name($certs['cert'], 'pem'), $certs['cert'], true)['url']);
+                    static::withWxpayCert($options);
+                } else throw new Exception('商户账号与 P12 证书不匹配！');
+            }
         }
+        return $options;
+    }
+
+    /**
+     * 处理支付证书配置
+     * @param array $options
+     * @return array
+     * @throws \think\admin\Exception
+     */
+    private static function withWxpayCert(array &$options): array
+    {
+        $local = LocalStorage::instance();
+        $sslCer = $local->path(sysconf('wechat.mch_ssl_cer'), true);
+        $sslKey = $local->path(sysconf('wechat.mch_ssl_key'), true);
+        if (is_file($sslCer)) $options['cert_public'] = $options['ssl_cer'] = $sslCer;
+        if (is_file($sslKey)) $options['cert_private'] = $options['ssl_key'] = $sslKey;
         return $options;
     }
 
