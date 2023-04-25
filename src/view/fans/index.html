@@ -27,9 +27,10 @@
     $(function () {
         $('#UserData').layTable({
             even: true, height: 'full',
-            sort: {field: 'subscribe_time', type: 'desc'},
+            sort: {field: 'id', type: 'desc'},
             cols: [[
                 {checkbox: true},
+                {field: 'id', hide: true},
                 {
                     field: 'headimg', title: '头像', width: 65, align: "center", templet: function (d) {
                         d.headimgurl = d.headimgurl || '';
