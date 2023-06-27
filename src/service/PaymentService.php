@@ -267,9 +267,8 @@ class PaymentService
     {
         $refund = WechatPaymentRefund::mk()->where(['code' => $rCode])->findOrEmpty();
         if ($refund->isEmpty()) return [0, '退款不存在！'];
-//        if ($refund->getAttr('refund_status')) return [1, '退款已完成！'];
+        if ($refund->getAttr('refund_status')) return [1, '退款已完成！'];
         $result = static::withPayment()->queryRefund($rCode);
-        dump($result);
         $extra = [
             'refund_trade'   => $result['refund_id'],
             'refund_scode'   => $result['status'],
