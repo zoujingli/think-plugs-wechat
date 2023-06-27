@@ -96,8 +96,8 @@ class Service extends Plugin
             [
                 'name' => '微信支付',
                 'subs' => [
-                    ['name' => '微信支付行为', 'icon' => 'layui-icon layui-icon-username', 'node' => "wechat/payment.record/index"],
-                    ['name' => '微信退款管理', 'icon' => 'layui-icon layui-icon-template-1', 'node' => "wechat/payment.refund/index"],
+                    ['name' => '微信支付行为', 'icon' => 'layui-icon layui-icon-rmb', 'node' => "wechat/payment.record/index"],
+                    ['name' => '微信退款管理', 'icon' => 'layui-icon layui-icon-engine', 'node' => "wechat/payment.refund/index"],
                 ]
             ]
         ];
