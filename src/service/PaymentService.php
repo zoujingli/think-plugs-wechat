@@ -84,7 +84,8 @@ class PaymentService
                 return ['code' => 0, 'info' => '支付总额超出！', 'data' => [], 'params' => []];
             }
             $config = WechatService::getConfig();
-            $pCode = CodeExtend::uniqidNumber(16, 'P');
+            do $pCode = CodeExtend::uniqidNumber(16, 'P');
+            while (WechatPaymentRecord::mk()->where(['code' => $pCode])->findOrEmpty()->isExists());
             $data = [
                 'appid'        => $config['appid'],
                 'mchid'        => $config['mch_id'],
