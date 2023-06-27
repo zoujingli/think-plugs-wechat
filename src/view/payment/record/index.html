@@ -62,7 +62,7 @@
                             d.typeDatetime = d.create_time || '-';
                         }
                         if (d.payment_amount > 0 && d.payment_amount <= d.refund_amount) {
-                            d.typeInfo += ' <b class="color-red">已全部退款</b>';
+                            d.typeInfo += ' <b class="color-red">已全额退款</b>';
                         } else if (d.payment_amount > 0 && d.refund_amount > 0) {
                             d.typeInfo += '<b class="color-red"> 已退款 ' + d.refund_amount + ' 元</b>'
                         }
