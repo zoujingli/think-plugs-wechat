@@ -33,7 +33,7 @@
                     }
                 },
                 {
-                    field: '', title: '支付交易', sort: true, minWidth: 180, width: '20%', templet: function (d) {
+                    field: '', title: '支付交易', minWidth: 180, width: '20%', templet: function (d) {
                         let lines = [];
                         lines.push('<b class="color-blue font-code">{{d.record.code||"-"}}</b>');
                         lines.push('<b class="color-blue font-code">{{d.record.payment_trade||"-"}}</b>');
