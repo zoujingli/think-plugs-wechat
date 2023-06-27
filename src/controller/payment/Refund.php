@@ -23,14 +23,14 @@ use think\admin\Controller;
 use think\admin\helper\QueryHelper;
 
 /**
- * 微信支付退款管理
+ * 支付退款管理
  * @class Refund
  * @package app\wechat\controller
  */
 class Refund extends Controller
 {
     /**
-     * 微信退款管理
+     * 支付退款管理
      * @auth true
      * @menu true
      * @return void
@@ -41,7 +41,7 @@ class Refund extends Controller
     public function index()
     {
         WechatPaymentRefund::mQuery()->layTable(function () {
-            $this->title = '微信退款管理';
+            $this->title = '支付退款管理';
         }, function (QueryHelper $query) {
             $query->with(['record'])->like('code|refund_trade#refund');
             if (($this->get['order'] ?? '') . ($this->get['nickname'] ?? '') . ($this->get['payment'] ?? '') . ($this->get['refund'] ?? '') !== '') {
