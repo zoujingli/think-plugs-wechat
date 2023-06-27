@@ -17,6 +17,7 @@
 namespace app\wechat\controller\api;
 
 use app\wechat\service\MediaService;
+use app\wechat\service\PaymentService;
 use app\wechat\service\WechatService;
 use think\admin\Controller;
 use think\admin\extend\CodeExtend;
@@ -32,6 +33,7 @@ class Test extends Controller
 {
     /**
      * 微信JSAPI支付二维码
+     * @login true
      * @return \think\Response
      */
     public function jsapiQrc(): Response
@@ -42,6 +44,7 @@ class Test extends Controller
 
     /**
      * 显示网页授权二维码
+     * @login true
      * @return \think\Response
      */
     public function oauthQrc(): Response
@@ -52,6 +55,7 @@ class Test extends Controller
 
     /**
      * 显示网页授权二维码
+     * @login true
      * @return \think\Response
      */
     public function jssdkQrc(): Response
@@ -62,6 +66,7 @@ class Test extends Controller
 
     /**
      * 微信扫码支付模式一二维码显示
+     * @login true
      * @return \think\Response
      */
     public function scanOneQrc(): Response
@@ -72,21 +77,24 @@ class Test extends Controller
 
     /**
      * 扫码支付模式二测试二维码
+     * @login true
      * @return \think\Response
-     * @throws \WeChat\Exceptions\InvalidResponseException
-     * @throws \WeChat\Exceptions\LocalCacheException
+     * @throws \think\admin\Exception
      */
     public function scanTwoQrc(): Response
     {
-        $result = WechatService::WePayOrder()->create([
-            'body'             => '测试商品',
-            'total_fee'        => '1',
-            'trade_type'       => 'NATIVE',
-            'notify_url'       => sysuri('wechat/api.test/notify', [], false, true),
-            'out_trade_no'     => CodeExtend::uniqidNumber(18),
-            'spbill_create_ip' => $this->request->ip(),
-        ]);
-        return $this->_buildQrcResponse($result['code_url']);
+        $code = CodeExtend::uniqidDate(18, 'TX');
+        $result = PaymentService::create('', $code, "扫码支付测试 {$code}", '0.01', PaymentService::WECHAT_QRC, '0.01');
+        return $this->_buildQrcResponse($result['params']['code_url']);
+        //    $result = WechatService::WePayOrder()->create([
+        //        'body'             => '测试商品',
+        //        'total_fee'        => '1',
+        //        'trade_type'       => 'NATIVE',
+        //        'notify_url'       => sysuri('wechat/api.test/notify', [], false, true),
+        //        'out_trade_no'     => CodeExtend::uniqidNumber(18),
+        //        'spbill_create_ip' => $this->request->ip(),
+        //    ]);
+        //    return $this->_buildQrcResponse($result['code_url']);
     }
 
     /**
@@ -163,23 +171,28 @@ class Test extends Controller
      */
     public function jsapi(): string
     {
-        $this->url = $this->request->url(true);
-        $this->pay = WechatService::WePayOrder();
-        $user = WechatService::getWebOauthInfo($this->url);
+        // 微信用户信息
+        $user = WechatService::getWebOauthInfo($this->request->url(true));
         if (empty($user['openid'])) return '<h3>网页授权获取OPENID失败！</h3>';
-        // 生成预支付码
-        $result = $this->pay->create([
-            'body'             => '测试商品',
-            'openid'           => $user['openid'],
-            'total_fee'        => '1',
-            'trade_type'       => 'JSAPI',
-            'notify_url'       => sysuri('wechat/api.test/notify', [], false, true),
-            'out_trade_no'     => CodeExtend::uniqidDate(18),
-            'spbill_create_ip' => $this->request->ip(),
-        ]);
-        // 数据参数格式化
+        // 生码技术参数
+        $oCode = CodeExtend::uniqidDate(18, 'TX');
+        $result = PaymentService::create($user['openid'], $oCode, "JSAPI 支付测试 {$oCode}", '0.01', PaymentService::WECHAT_GZH);
         $resultJson = var_export($result, true);
-        $optionJson = json_encode($this->pay->jsapiParams($result['prepay_id']), JSON_UNESCAPED_UNICODE);
+        $optionJson = json_encode($result['params'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+//        $this->pay = WechatService::WePayOrder();
+//        // 生成预支付码
+//        $result = $this->pay->create([
+//            'body'             => '测试商品',
+//            'openid'           => $user['openid'],
+//            'total_fee'        => '1',
+//            'trade_type'       => 'JSAPI',
+//            'notify_url'       => sysuri('wechat/api.test/notify', [], false, true),
+//            'out_trade_no'     => CodeExtend::uniqidDate(18),
+//            'spbill_create_ip' => $this->request->ip(),
+//        ]);
+//        // 数据参数格式化
+//        $resultJson = var_export($result, true);
+//        $optionJson = json_encode($this->pay->jsapiParams($result['prepay_id']), JSON_UNESCAPED_UNICODE);
         $configJson = json_encode(WechatService::getWebJssdkSign(), JSON_UNESCAPED_UNICODE);
         return <<<HTML
 <pre>
@@ -187,15 +200,20 @@ class Test extends Controller
     \n\n--- 创建微信预支付码结果 ---\n {$resultJson}
     \n\n--- JSAPI 及 H5 支付参数 ---\n {$optionJson}
 </pre>
-<button id='paytest' type='button'>JSAPI支付测试</button>
+<div style="padding:50px">
+    <button id='paytest' type='button'>JSAPI支付测试</button>
+</div>
 <script src='//res.wx.qq.com/open/js/jweixin-1.6.0.js'></script>
 <script>
     wx.config({$configJson});
     document.getElementById('paytest').onclick = function(){
-        var options = {$optionJson};
+        let options = JSON.parse('{$optionJson}');
+
         options.success = function(){
             alert('支付成功');
-        }
+        };
+        
+        console.log("OPTIONS:",options);
         wx.chooseWXPay(options);
     }
 </script>

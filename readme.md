@@ -50,6 +50,8 @@ composer remove zoujingli/think-plugs-wechat
 * 微信菜单配置：`wechat/menu/index`
 * 回复规则管理：`wechat/keys/index`
 * 关注自动回复：`wechat/auto/index`
+* 微信支付管理：`wechat/payment.record/index`
+* 微信退款管理：`wechat/payment.refund/index`
 
 ### 插件数据库
 
@@ -62,6 +64,8 @@ composer remove zoujingli/think-plugs-wechat
 * 微信-素材：`wechat_media`
 * 微信-图文：`wechat_news`
 * 微信-文章：`wechat_news_article`
+* 微信-支付：`wechat_payment_record`
+* 微信-退款：`wechat_payment_refund`
 
 ### 版权说明
 
