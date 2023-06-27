@@ -14,6 +14,7 @@
             even: true, height: 'full',
             sort: {field: 'id', type: 'desc'},
             cols: [[
+                {field: 'id', hide: true},
                 {field: 'headimg', title: '头像', width: 95, align: 'center', templet: '<div>{{-showTableImage(d.record.fans_headimg,true,"md")}}</div>'},
                 {
                     field: '', title: '用户账号', minWidth: 170, templet: function (d) {

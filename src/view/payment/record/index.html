@@ -20,6 +20,7 @@
             even: true, height: 'full',
             sort: {field: 'id', type: 'desc'},
             cols: [[
+                {field: 'id', hide: true},
                 {field: 'headimg', title: '头像', width: 70, align: 'center', templet: '<div>{{-showTableImage(d.fans_headimg,true,"sm")}}</div>'},
                 {
                     field: 'id', title: '用户信息', minWidth: 170, templet: function (d) {
