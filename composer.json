@@ -21,9 +21,10 @@
     "zoujingli/wechat-developer": "^1.2||dev-master"
   },
   "extra": {
-    "config": {
-      "type": "module",
-      "name": "微信管理模块"
+    "think": {
+      "services": [
+        "app\\wechat\\Service"
+      ]
     },
     "plugin": {
       "copy": {
@@ -32,10 +33,11 @@
       },
       "clear": true
     },
-    "think": {
-      "services": [
-        "app\\wechat\\Service"
-      ]
+    "config": {
+      "type": "module",
+      "name": "微信数据管理",
+      "homepage": "https://thinkadmin.top",
+      "document": "https://thinkadmin.top/plugin/think-plugs-wechat.html"
     }
   },
   "minimum-stability": "dev",
