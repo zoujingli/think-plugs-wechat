@@ -16,28 +16,31 @@
     "ext-openssl": "*",
     "ext-mbstring": "*",
     "zoujingli/qrcode": "^1.0",
-    "zoujingli/think-install": "^1.0||dev-master",
-    "zoujingli/think-library": "^6.1.36||v6.0.x-dev",
-    "zoujingli/wechat-developer": "^1.2||dev-master"
+    "zoujingli/think-install": "^1.0|dev-master",
+    "zoujingli/think-library": "^6.1.36|v6.0.x-dev",
+    "zoujingli/wechat-developer": "^1.2|dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "app\\wechat\\": "src"
+    }
   },
   "extra": {
-    "think": {
-      "services": [
-        "app\\wechat\\Service"
-      ]
-    },
-    "plugin": {
-      "copy": {
-        "src": "!app/wechat",
-        "stc/database": "database/migrations"
-      },
-      "clear": true
-    },
     "config": {
       "type": "module",
       "name": "微信数据管理",
       "homepage": "https://thinkadmin.top",
       "document": "https://thinkadmin.top/plugin/think-plugs-wechat.html"
+    },
+    "plugin": {
+      "copy": {
+        "stc/database": "database/migrations"
+      }
+    },
+    "think": {
+      "services": [
+        "app\\wechat\\Service"
+      ]
     }
   },
   "minimum-stability": "dev",

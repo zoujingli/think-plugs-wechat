@@ -22,7 +22,7 @@ use think\migration\Migrator;
 /**
  * 微信模块数据表
  */
-class UpdateWechat20230628 extends Migrator
+class InstallWechat20230628 extends Migrator
 {
 
     /**
