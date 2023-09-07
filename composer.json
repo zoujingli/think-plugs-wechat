@@ -20,11 +20,6 @@
     "zoujingli/think-library": "^6.1.36|v6.0.x-dev",
     "zoujingli/wechat-developer": "^1.2|dev-master"
   },
-  "autoload": {
-    "psr-4": {
-      "app\\wechat\\": "src"
-    }
-  },
   "extra": {
     "config": {
       "type": "module",
@@ -34,8 +29,10 @@
     },
     "plugin": {
       "copy": {
+        "src": "!app/wechat",
         "stc/database": "database/migrations"
-      }
+      },
+      "clear": true
     },
     "think": {
       "services": [
