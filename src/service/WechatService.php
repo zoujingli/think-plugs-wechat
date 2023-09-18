@@ -275,8 +275,11 @@ class WechatService extends Service
                 }
             }
             if ($getVars['rcode']) {
-                $location = debase64url($getVars['rcode']);
-                throw new HttpResponseException($redirect ? redirect($location, 301) : response("location.replace('{$location}');sessionStorage.setItem('wechat.session','{$sessid}');"));
+                if ($location = debase64url($getVars['rcode'])) {
+                    throw new HttpResponseException(redirect($location, 301));
+                } else {
+                    throw new HttpResponseException(response("location.replace('{$location}');\nsessionStorage.setItem('wechat.session','{$sessid}');"));
+                }
             } elseif ((empty($isfull) && !empty($openid)) || (!empty($isfull) && !empty($openid) && !empty($userinfo))) {
                 return ['openid' => $openid, 'fansinfo' => $userinfo];
             } else {
@@ -297,7 +300,7 @@ class WechatService extends Service
             if ($redirect) {
                 throw new HttpResponseException(redirect($result['url'], 301));
             } else {
-                throw new HttpResponseException(response("location.replace('{$result['url']}');localStorage.setItem('wechat.session','{$sessid}');"));
+                throw new HttpResponseException(response("location.replace('{$result['url']}');sessionStorage.setItem('wechat.session','{$sessid}');"));
             }
         }
     }
