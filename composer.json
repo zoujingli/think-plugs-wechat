@@ -15,10 +15,10 @@
     "ext-json": "*",
     "ext-openssl": "*",
     "ext-mbstring": "*",
-    "zoujingli/qrcode": "^1.0",
-    "zoujingli/think-install": "^1.0|dev-master",
-    "zoujingli/think-library": "^6.1.36|v6.0.x-dev",
-    "zoujingli/wechat-developer": "^1.2|dev-master"
+    "zoujingli/qrcode": "^1.0|@dev",
+    "zoujingli/think-install": "^1.0|@dev",
+    "zoujingli/think-library": "^6.1|@dev",
+    "zoujingli/wechat-developer": "^1.2|@dev"
   },
   "extra": {
     "config": {
