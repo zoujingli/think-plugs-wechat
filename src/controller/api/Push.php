@@ -19,7 +19,6 @@ use app\wechat\service\FansService;
 use app\wechat\service\MediaService;
 use app\wechat\service\WechatService;
 use think\admin\Controller;
-use think\admin\Exception;
 
 /**
  * 微信消息推送处理
@@ -101,7 +100,7 @@ class Push extends Controller
                 $this->encrypt = boolval($this->request->post('encrypt', 0));
                 $this->receive = $this->_arrayChangeKeyCase(json_decode(input('params', '[]'), true));
                 if (empty($this->appid) || empty($this->openid) || empty($this->receive)) {
-                    throw new Exception('微信API实例缺失必要参数[appid,openid,receive]');
+                    throw new \think\admin\Exception('微信API实例缺失必要参数[appid,openid,receive]');
                 }
             } else {
                 $this->forceJson = false; // 直接返回JSON对象数据
