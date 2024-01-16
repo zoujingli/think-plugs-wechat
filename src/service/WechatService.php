@@ -202,20 +202,23 @@ class WechatService extends Service
 
     /**
      * 获取小程序配置参数
+     * @param boolean $ispay 支付参数
      * @return array
      * @throws \think\admin\Exception
      */
-    public static function getWxconf(): array
+    public static function getWxconf(bool $ispay = false): array
     {
         $wxapp = sysdata('plugin.wechat.wxapp');
-        return static::withWxpayCert([
+        $config = [
             'appid'      => $wxapp['appid'] ?? '',
             'appsecret'  => $wxapp['appkey'] ?? '',
+            'cache_path' => syspath('runtime/wechat'),
+        ];
+        return $ispay ? static::withWxpayCert(array_merge([
             'mch_id'     => sysconf('wechat.mch_id'),
             'mch_key'    => sysconf('wechat.mch_key'),
             'mch_v3_key' => sysconf('wechat.mch_v3_key'),
-            'cache_path' => syspath('runtime/wechat'),
-        ]);
+        ], $config)) : $config;
     }
 
     /**
