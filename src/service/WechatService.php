@@ -119,11 +119,7 @@ class WechatService extends Service
         }
         if (sysconf('wechat.type') === 'api' || in_array($type, ['WePay', 'WePayV3'])) {
             if (class_exists($class)) {
-                if ($type === 'WeChat') {
-                    return new $class(static::getConfig());
-                } else {
-                    return new $class(static::getWxconf());
-                }
+                return new $class($type === 'WeMini' ? static::getWxconf() : static::getConfig());
             } else {
                 throw new Exception("抱歉，接口模式无法实例 {$class} 对象！");
             }
