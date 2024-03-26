@@ -78,11 +78,11 @@ class InstallWechat extends Migrator
             ->addColumn('status', 'integer', ['limit' => 1, 'default' => 1, 'null' => true, 'comment' => '状态(0禁用,1启用)'])
             ->addColumn('create_by', 'biginteger', ['limit' => 20, 'default' => 0, 'null' => true, 'comment' => '创建人'])
             ->addColumn('create_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'null' => true, 'comment' => '创建时间'])
-            ->addIndex('code', ['name' => 'idx_wechat_auto_code'])
-            ->addIndex('type', ['name' => 'idx_wechat_auto_type'])
-            ->addIndex('time', ['name' => 'idx_wechat_auto_time'])
-            ->addIndex('appid', ['name' => 'idx_wechat_auto_appid'])
-            ->addIndex('status', ['name' => 'idx_wechat_auto_status'])
+            ->addIndex('code', ['name' => 'i15cee0aa7_code'])
+            ->addIndex('type', ['name' => 'i15cee0aa7_type'])
+            ->addIndex('time', ['name' => 'i15cee0aa7_time'])
+            ->addIndex('appid', ['name' => 'i15cee0aa7_appid'])
+            ->addIndex('status', ['name' => 'i15cee0aa7_status'])
             ->create();
 
         // 修改主键长度
@@ -128,11 +128,11 @@ class InstallWechat extends Migrator
             ->addColumn('qr_scene', 'string', ['limit' => 100, 'default' => '', 'null' => true, 'comment' => '二维码场景值'])
             ->addColumn('qr_scene_str', 'string', ['limit' => 200, 'default' => '', 'null' => true, 'comment' => '二维码场景内容'])
             ->addColumn('create_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'null' => true, 'comment' => '创建时间'])
-            ->addIndex('appid', ['name' => 'idx_wechat_fans_appid'])
-            ->addIndex('openid', ['name' => 'idx_wechat_fans_openid'])
-            ->addIndex('unionid', ['name' => 'idx_wechat_fans_unionid'])
-            ->addIndex('is_black', ['name' => 'idx_wechat_fans_is_black'])
-            ->addIndex('subscribe', ['name' => 'idx_wechat_fans_subscribe'])
+            ->addIndex('appid', ['name' => 'ic99bc7baf_appid'])
+            ->addIndex('openid', ['name' => 'ic99bc7baf_openid'])
+            ->addIndex('unionid', ['name' => 'ic99bc7baf_unionid'])
+            ->addIndex('is_black', ['name' => 'ic99bc7baf_is_black'])
+            ->addIndex('subscribe', ['name' => 'ic99bc7baf_subscribe'])
             ->create();
 
         // 修改主键长度
@@ -162,8 +162,8 @@ class InstallWechat extends Migrator
             ->addColumn('name', 'string', ['limit' => 35, 'default' => '', 'null' => true, 'comment' => '标签名称'])
             ->addColumn('count', 'biginteger', ['limit' => 20, 'default' => 0, 'null' => true, 'comment' => '粉丝总数'])
             ->addColumn('create_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'null' => true, 'comment' => '创建日期'])
-            ->addIndex('id', ['name' => 'idx_wechat_fans_tags_id'])
-            ->addIndex('appid', ['name' => 'idx_wechat_fans_tags_appid'])
+            ->addIndex('id', ['name' => 'i1e2a8a9a3_id'])
+            ->addIndex('appid', ['name' => 'i1e2a8a9a3_appid'])
             ->create();
 
         // 修改主键长度
@@ -207,11 +207,11 @@ class InstallWechat extends Migrator
             ->addColumn('status', 'integer', ['limit' => 1, 'default' => 1, 'null' => true, 'comment' => '状态(0禁用,1启用)'])
             ->addColumn('create_by', 'biginteger', ['limit' => 20, 'default' => 0, 'null' => true, 'comment' => '创建人'])
             ->addColumn('create_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'null' => true, 'comment' => '创建时间'])
-            ->addIndex('type', ['name' => 'idx_wechat_keys_type'])
-            ->addIndex('keys', ['name' => 'idx_wechat_keys_keys'])
-            ->addIndex('sort', ['name' => 'idx_wechat_keys_sort'])
-            ->addIndex('appid', ['name' => 'idx_wechat_keys_appid'])
-            ->addIndex('status', ['name' => 'idx_wechat_keys_status'])
+            ->addIndex('type', ['name' => 'i23d2c7f47_type'])
+            ->addIndex('keys', ['name' => 'i23d2c7f47_keys'])
+            ->addIndex('sort', ['name' => 'i23d2c7f47_sort'])
+            ->addIndex('appid', ['name' => 'i23d2c7f47_appid'])
+            ->addIndex('status', ['name' => 'i23d2c7f47_status'])
             ->create();
 
         // 修改主键长度
@@ -244,10 +244,10 @@ class InstallWechat extends Migrator
             ->addColumn('local_url', 'string', ['limit' => 300, 'default' => '', 'null' => true, 'comment' => '本地文件链接'])
             ->addColumn('media_url', 'string', ['limit' => 300, 'default' => '', 'null' => true, 'comment' => '远程图片链接'])
             ->addColumn('create_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'null' => true, 'comment' => '创建时间'])
-            ->addIndex('md5', ['name' => 'idx_wechat_media_md5'])
-            ->addIndex('type', ['name' => 'idx_wechat_media_type'])
-            ->addIndex('appid', ['name' => 'idx_wechat_media_appid'])
-            ->addIndex('media_id', ['name' => 'idx_wechat_media_media_id'])
+            ->addIndex('md5', ['name' => 'i7f6418618_md5'])
+            ->addIndex('type', ['name' => 'i7f6418618_type'])
+            ->addIndex('appid', ['name' => 'i7f6418618_appid'])
+            ->addIndex('media_id', ['name' => 'i7f6418618_media_id'])
             ->create();
 
         // 修改主键长度
@@ -279,8 +279,8 @@ class InstallWechat extends Migrator
             ->addColumn('is_deleted', 'integer', ['limit' => 1, 'default' => 0, 'null' => true, 'comment' => '删除状态(0未删除,1已删除)'])
             ->addColumn('create_at', 'timestamp', ['default' => 'CURRENT_TIMESTAMP', 'null' => true, 'comment' => '创建时间'])
             ->addColumn('create_by', 'biginteger', ['limit' => 20, 'default' => 0, 'null' => true, 'comment' => '创建人'])
-            ->addIndex('media_id', ['name' => 'idx_wechat_news_media_id'])
-            ->addIndex('article_id', ['name' => 'idx_wechat_news_article_id'])
+            ->addIndex('media_id', ['name' => 'ib3c69027e_media_id'])
+            ->addIndex('article_id', ['name' => 'ib3c69027e_article_id'])
             ->create();
 
         // 修改主键长度
@@ -358,14 +358,14 @@ class InstallWechat extends Migrator
             ->addColumn('refund_amount', 'decimal', ['precision' => 20, 'scale' => 2, 'default' => '0.00', 'null' => true, 'comment' => '退款金额'])
             ->addColumn('create_time', 'datetime', ['default' => NULL, 'null' => true, 'comment' => '创建时间'])
             ->addColumn('update_time', 'datetime', ['default' => NULL, 'null' => true, 'comment' => '更新时间'])
-            ->addIndex('type', ['name' => 'idx_wechat_payment_record_type'])
-            ->addIndex('code', ['name' => 'idx_wechat_payment_record_code'])
-            ->addIndex('appid', ['name' => 'idx_wechat_payment_record_appid'])
-            ->addIndex('openid', ['name' => 'idx_wechat_payment_record_openid'])
-            ->addIndex('order_code', ['name' => 'idx_wechat_payment_record_order_code'])
-            ->addIndex('create_time', ['name' => 'idx_wechat_payment_record_create_time'])
-            ->addIndex('payment_trade', ['name' => 'idx_wechat_payment_record_payment_trade'])
-            ->addIndex('payment_status', ['name' => 'idx_wechat_payment_record_payment_status'])
+            ->addIndex('type', ['name' => 'i43926536a_type'])
+            ->addIndex('code', ['name' => 'i43926536a_code'])
+            ->addIndex('appid', ['name' => 'i43926536a_appid'])
+            ->addIndex('openid', ['name' => 'i43926536a_openid'])
+            ->addIndex('order_code', ['name' => 'i43926536a_order_code'])
+            ->addIndex('create_time', ['name' => 'i43926536a_create_time'])
+            ->addIndex('payment_trade', ['name' => 'i43926536a_payment_trade'])
+            ->addIndex('payment_status', ['name' => 'i43926536a_payment_status'])
             ->create();
 
         // 修改主键长度
@@ -403,11 +403,11 @@ class InstallWechat extends Migrator
             ->addColumn('refund_notify', 'text', ['default' => NULL, 'null' => true, 'comment' => '退款交易通知'])
             ->addColumn('create_time', 'datetime', ['default' => NULL, 'null' => true, 'comment' => '创建时间'])
             ->addColumn('update_time', 'datetime', ['default' => NULL, 'null' => true, 'comment' => '更新时间'])
-            ->addIndex('code', ['name' => 'idx_wechat_payment_refund_code'])
-            ->addIndex('create_time', ['name' => 'idx_wechat_payment_refund_create_time'])
-            ->addIndex('record_code', ['name' => 'idx_wechat_payment_refund_record_code'])
-            ->addIndex('refund_trade', ['name' => 'idx_wechat_payment_refund_refund_trade'])
-            ->addIndex('refund_status', ['name' => 'idx_wechat_payment_refund_refund_status'])
+            ->addIndex('code', ['name' => 'i5a815074f_code'])
+            ->addIndex('record_code', ['name' => 'i5a815074f_record_code'])
+            ->addIndex('create_time', ['name' => 'i5a815074f_create_time'])
+            ->addIndex('refund_trade', ['name' => 'i5a815074f_refund_trade'])
+            ->addIndex('refund_status', ['name' => 'i5a815074f_refund_status'])
             ->create();
 
         // 修改主键长度

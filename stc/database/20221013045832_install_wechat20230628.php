@@ -71,14 +71,14 @@ class InstallWechat20230628 extends Migrator
             ->addColumn('refund_amount', 'decimal', ['precision' => 20, 'scale' => 2, 'default' => '0.00', 'null' => true, 'comment' => '退款金额'])
             ->addColumn('create_time', 'datetime', ['default' => NULL, 'null' => true, 'comment' => '创建时间'])
             ->addColumn('update_time', 'datetime', ['default' => NULL, 'null' => true, 'comment' => '更新时间'])
-            ->addIndex('type', ['name' => 'idx_wechat_payment_record_type'])
-            ->addIndex('code', ['name' => 'idx_wechat_payment_record_code'])
-            ->addIndex('appid', ['name' => 'idx_wechat_payment_record_appid'])
-            ->addIndex('openid', ['name' => 'idx_wechat_payment_record_openid'])
-            ->addIndex('order_code', ['name' => 'idx_wechat_payment_record_order_code'])
-            ->addIndex('create_time', ['name' => 'idx_wechat_payment_record_create_time'])
-            ->addIndex('payment_trade', ['name' => 'idx_wechat_payment_record_payment_trade'])
-            ->addIndex('payment_status', ['name' => 'idx_wechat_payment_record_payment_status'])
+            ->addIndex('type', ['name' => 'i43926536a_type'])
+            ->addIndex('code', ['name' => 'i43926536a_code'])
+            ->addIndex('appid', ['name' => 'i43926536a_appid'])
+            ->addIndex('openid', ['name' => 'i43926536a_openid'])
+            ->addIndex('order_code', ['name' => 'i43926536a_order_code'])
+            ->addIndex('create_time', ['name' => 'i43926536a_create_time'])
+            ->addIndex('payment_trade', ['name' => 'i43926536a_payment_trade'])
+            ->addIndex('payment_status', ['name' => 'i43926536a_payment_status'])
             ->create();
 
         // 修改主键长度
@@ -116,11 +116,11 @@ class InstallWechat20230628 extends Migrator
             ->addColumn('refund_notify', 'text', ['default' => NULL, 'null' => true, 'comment' => '退款交易通知'])
             ->addColumn('create_time', 'datetime', ['default' => NULL, 'null' => true, 'comment' => '创建时间'])
             ->addColumn('update_time', 'datetime', ['default' => NULL, 'null' => true, 'comment' => '更新时间'])
-            ->addIndex('code', ['name' => 'idx_wechat_payment_refund_code'])
-            ->addIndex('create_time', ['name' => 'idx_wechat_payment_refund_create_time'])
-            ->addIndex('record_code', ['name' => 'idx_wechat_payment_refund_record_code'])
-            ->addIndex('refund_trade', ['name' => 'idx_wechat_payment_refund_refund_trade'])
-            ->addIndex('refund_status', ['name' => 'idx_wechat_payment_refund_refund_status'])
+            ->addIndex('code', ['name' => 'i5a815074f_code'])
+            ->addIndex('record_code', ['name' => 'i5a815074f_record_code'])
+            ->addIndex('create_time', ['name' => 'i5a815074f_create_time'])
+            ->addIndex('refund_trade', ['name' => 'i5a815074f_refund_trade'])
+            ->addIndex('refund_status', ['name' => 'i5a815074f_refund_status'])
             ->create();
 
         // 修改主键长度
