@@ -8,15 +8,15 @@
 [![PHP Version](https://thinkadmin.top/static/icon/php-7.1.svg)](https://thinkadmin.top)
 [![License](https://thinkadmin.top/static/icon/license-mit.svg)](https://mit-license.org)
 
-**ThinkAdmin** 微信管理插件，微信基础管理模块，开源免费可商用！
+**ThinkPlugsWechat** 是 **ThinkAdmin** 的专属微信管理插件，提供功能全面的微信基础管理模块，基于 MIT 协议开源，免费可商用！
 
-代码主仓库放在 **Gitee**，**Github** 仅为镜像仓库用于发布 **Composer** 包。
+我们的主代码仓库位于 **Gitee**，而 **Github** 则作为镜像仓库，主要用于发布 **Composer** 包，方便广大开发者获取和使用。
 
-安装此插件会占用并替换 `app/wechat` 目录 ( 先删再写 )，若有对 `app/wechat` 有修改不建议安装此插件，否则会造成修改的内容丢失！
+请注意，安装此插件将会占用并替换 `app/wechat` 目录（采用先删除再写入的方式）。因此，如果您之前对 `app/wechat` 目录有过自定义修改，我们强烈建议您在安装插件前进行备份，否则这些修改可能会丢失。
 
-使用 `Composer` 卸载此插件时，不会删除 `app/wechat` 目录和对应数据表，需要手动删除目录和数据表。
+此外，当您使用 `Composer` 卸载此插件时，请务必记得手动删除 `app/wechat` 目录及相关的数据表，因为这些内容不会被自动清理。
 
-如果不希望自有的 `app/wechat` 目录被更新替换，可以在 `app/wechat` 目录下创建 `ignore` 文件（ 如 `app/wechat/ignore`，注意文件名没有后缀哦！），即使执行了插件安装或更新都会忽略更新替换。
+如果您希望保留自有的 `app/wechat` 目录，避免被插件更新替换，只需在该目录下创建一个名为 `ignore` 的文件（例如 `app/wechat/ignore`，请注意文件名不应有后缀）。这样，即使在执行插件安装或更新操作时，该目录也将被忽略，不会被更新替换。
 
 ### 安装插件
 
