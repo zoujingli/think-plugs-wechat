@@ -8,7 +8,7 @@
 [![PHP Version](https://thinkadmin.top/static/icon/php-7.1.svg)](https://thinkadmin.top)
 [![License](https://thinkadmin.top/static/icon/license-mit.svg)](https://mit-license.org)
 
-**ThinkPlugsWechat** 是 **ThinkAdmin** 的专属微信管理插件，提供功能全面的微信基础管理模块，基于 MIT 协议开源，免费可商用！
+**ThinkPlugsWechat** 是 **ThinkAdmin** 的核心插件，提供全面的微信基础管理功能，基于 MIT 协议开源，免费可商用！
 
 我们的主代码仓库位于 **Gitee**，而 **Github** 则作为镜像仓库，主要用于发布 **Composer** 包，方便广大开发者获取和使用。
 
@@ -73,4 +73,4 @@ composer remove zoujingli/think-plugs-wechat
 
 本项目包含的第三方源码和二进制文件的版权信息将另行标注，请在对应文件查看。
 
-版权所有 Copyright © 2014-2023 by ThinkAdmin (https://thinkadmin.top) All rights reserved。
+版权所有 Copyright © 2014-2024 by ThinkAdmin (https://thinkadmin.top) All rights reserved。
